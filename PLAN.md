@@ -49,10 +49,10 @@ The project is "done" when all of the following are true:
 
 | Decision | Recommendation | Why |
 |---|---|---|
-| Brand set | Head & Shoulders, Pantene, Herbal Essences (haircare) | Same category means clean like-for-like comparison. All three are P&G. Swap any if the dataset is thin. |
-| Category fallback | Grooming (Gillette, Oral-B) or skincare (Olay) | Use only if haircare review coverage is weak in the chosen dataset. |
-| Data source | Existing Kaggle / public reviews dataset, filtered to P&G brands | Scraping a live retailer risks ToS friction and can eat a full day. See Section 5. |
-| Generation model | Groq, current Llama instruct model | You already know Groq's behavior and rate limits from MamaBot. Free tier. |
+| Brand set | **Locked (2026-09-15):** Head & Shoulders, Pantene, Herbal Essences (haircare) | Same category means clean like-for-like comparison. All three are P&G. Measured coverage clears the volume bar (Section 13). |
+| Category fallback | Grooming (Gillette, Oral-B) or skincare (Olay) | Not needed: haircare coverage is strong. Aussie is a viable fourth haircare brand but exceeds the 2–3 brand scope. |
+| Data source | **Locked (2026-09-15):** Amazon Reviews 2023 (`McAuley-Lab/Amazon-Reviews-2023` on Hugging Face), category `Beauty_and_Personal_Care`, filtered to the brand set | Public, no scraping. The `All_Beauty` subset is too thin for per-brand trends. See Section 13 for evidence and the dataset-terms caveat. |
+| Generation model | **Locked (2026-09-15):** Groq `openai/gpt-oss-120b`, low temperature (set once in `src/config.py`) | Groq shut down its Llama chat models on 2026-08-16 ([deprecations](https://console.groq.com/docs/deprecations)), so the original "current Llama instruct model" plan no longer exists. Groq names it as the replacement for `llama-3.3-70b-versatile`; the expectation of strong grounding is the selection rationale, to be measured in evaluation (Phase 5), not a measured result. Trade-off: it emits reasoning tokens (121 on a trivial call during selection) that count against the free-tier 8K tokens/min cap ([rate limits](https://console.groq.com/docs/rate-limits)). Free tier. |
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2`, run locally | Free, 384-dim, fast on Apple Silicon (CPU or MPS). No second API key. |
 | Vector store | ChromaDB (persistent, local) | Fastest solo setup, persists to disk, trivial to load in the Streamlit app. |
 | Deployment | Streamlit Community Cloud | Free hosting, GitHub-connected, secrets handling built in. |
@@ -94,7 +94,7 @@ Pin exact versions with `pip freeze > requirements.txt` once the environment wor
 ### Secrets and config
 - `GROQ_API_KEY` lives in a local `.env` (git-ignored) and in Streamlit Cloud's Secrets manager for deployment. Never commit it.
 - Add a `.env.example` with the key name and no value so the repo documents what is needed.
-- Confirm the current Groq model string before coding (model names change); set it once in a config constant, not scattered through the code.
+- The Groq model string is `openai/gpt-oss-120b` (confirmed 2026-09-15 with `uv run python -m src.groq_smoke`). It is set once as `GROQ_MODEL` in `src/config.py`, not scattered through the code. Model names change, so re-run the smoke test if calls start returning 404.
 
 ### `.gitignore` essentials
 ```
@@ -259,6 +259,7 @@ Write these into the README rather than hiding them:
 - The model can still drift from the source despite grounding; report where it did in evaluation.
 - Sentiment via VADER is a lexicon heuristic, not a trained classifier; it is directionally useful, not authoritative.
 - Findings describe the sampled reviews, not the true customer population; no statistical generalization is claimed.
+- Amazon Reviews 2023 publishes no terms of use for the data itself (checked on the Hugging Face card, project site, and MIT-licensed code repo). The project cites Hou et al. 2024 (arXiv:2403.03952) and does not redistribute the raw files.
 
 This section is a feature. It demonstrates the same evaluation honesty you already showed catching data leakage in a prior model, and technical interviewers trust it more than a project that claims to be flawless.
 
@@ -300,6 +301,44 @@ This section is a feature. It demonstrates the same evaluation honesty you alrea
 
 ## 13. Open Questions to Resolve on Day 1
 
-- Which exact dataset, and does it clear the minimum volume bar in Section 5.3 for the chosen brands?
-- Final brand set confirmed against that data.
-- Current Groq model string confirmed and set in `config.py`.
+All three were resolved on 2026-09-15.
+
+### 13.1 Which exact dataset, and does it clear the volume bar?
+
+**Answer:** Amazon Reviews 2023 (Hou et al. 2024, arXiv:2403.03952), Hugging Face repo `McAuley-Lab/Amazon-Reviews-2023`, category `Beauty_and_Personal_Care`. It clears the bar in Section 5.3 by roughly 10x to 30x per brand (see 13.2).
+
+- **Files:** `raw/review_categories/Beauty_and_Personal_Care.jsonl` (11,021,458,876 bytes, 23,911,390 reviews) and `raw/meta_categories/meta_Beauty_and_Personal_Care.jsonl` (2,835,194,976 bytes, 1,028,914 products). Reviews join to metadata on `parent_asin`; the brand lives in the metadata `store` field.
+- **Rejected:** the `All_Beauty` subset. It has only 13 / 70 / 34 matching products (1,601 / 1,700 / 663 ratings) for Head & Shoulders / Pantene / Herbal Essences, which is too thin for per-brand trends.
+- **Consequence for Phase 1:** the files are too large to store whole, so `data/download_data.py` should stream and filter to the brand set rather than download everything into `data/raw/`.
+- **Dataset terms caveat:** neither the Hugging Face dataset card, the project site, nor the MIT-licensed code repository states terms of use for the data itself. The project cites Hou et al. 2024 and lists this under limitations (Section 9); it does not redistribute the raw files.
+
+### 13.2 Final brand set confirmed against that data
+
+**Answer:** Head & Shoulders, Pantene, Herbal Essences (haircare). The fallback categories are not needed.
+
+Measured on 2026-09-15 with a full streaming pass over both files (nothing stored). A product belongs to a brand when its `store` or `title` matches the case-insensitive pattern in `src/config.py` (`(?i)head\s*(?:&|and|n'?)\s*shoulders`, `(?i)pantene`, `(?i)herbal\s+essence`). A "written review" has non-empty `text`. The star, verified-purchase, and date-range columns count written reviews only; dates are UTC.
+
+| Brand | Products (store match) | Reviews in file | Written reviews | 1★ | 2★ | 3★ | 4★ | 5★ | Verified purchase (written) | Date range (UTC) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Head & Shoulders | 402 (362) | 9,875 | **9,868** | 821 | 404 | 609 | 1,353 | 6,681 | 7,544 | 2005-06-28 to 2023-08-31 |
+| Pantene | 1,426 (1,411) | 29,692 | **29,670** | 2,548 | 1,250 | 1,854 | 3,478 | 20,540 | 23,667 | 2005-03-04 to 2023-09-01 |
+| Herbal Essences | 683 (612) | 16,339 | **16,325** | 1,413 | 815 | 1,210 | 2,121 | 10,766 | 11,693 | 2005-01-05 to 2023-08-31 |
+| **Total** | 2,511 | 55,906 | **55,863** | 4,782 | 2,469 | 3,673 | 6,952 | 37,987 | 42,904 | |
+
+Notes on the evidence:
+
+- These are pre-cleaning counts. Cleaning (dedup, empty-text drops) will lower them; the Phase 1 quality report gives the final numbers.
+- The metadata `rating_number` field sums to 227,681 / 270,991 / 171,707. That is Amazon's total rating count, which includes star-only ratings and reviews the dataset does not contain, so it overstates the available written reviews by roughly 9x to 23x per brand (12x overall). The written-review column is the number that matters.
+- One product matched two brand patterns and was assigned to the brand named in its `store` field. That is why Head & Shoulders shows 402 products here versus 403 in an earlier store-or-title count.
+- Title matches can include non-brand listings (for example a third-party product that names a brand in its title). Products matched only by title, not `store`, are 40 / 15 / 71. Story 2 should decide whether to keep title-only matches.
+- Ratings skew heavily positive (66% to 69% five-star per brand), but each brand still has at least 1,200 written 1–2★ reviews for the complaint analysis.
+- An independent single-stream pass with a separate script (which counted the one multi-brand product under both brands) agreed: Pantene 29,670 and Herbal Essences 16,325 written reviews exactly, Head & Shoulders 9,872 (+4, the multi-brand product).
+- Aussie (522 products / 185,453 ratings in metadata; 16,618 written reviews in that independent pass) is a viable fourth haircare brand but exceeds the 2–3 brand scope.
+
+### 13.3 Current Groq model string confirmed and set in `config.py`
+
+**Answer:** `openai/gpt-oss-120b`, set once as `GROQ_MODEL` in `src/config.py` with `GROQ_TEMPERATURE = 0.1`.
+
+- **Why Llama was dropped:** Groq's [deprecations page](https://console.groq.com/docs/deprecations) lists its Llama chat models (`llama-3.3-70b-versatile`, `llama-3.1-8b-instant`) as shut down on 2026-08-16, and this key's model list contains no Llama chat model. A call to `llama-3.3-70b-versatile` now returns HTTP 404 ("does not exist or you do not have access to it"). The maintainer chose `openai/gpt-oss-120b`, which Groq names as the replacement; stronger grounding is the expectation behind the choice and is measured in Phase 5, not assumed.
+- **Accepted trade-off:** it is a reasoning model. Its reasoning tokens count against the free-tier 8K tokens/min cap: 121 on a trivial call during model selection, and 53 of 66 completion tokens in the smoke test below. Phase 4 should budget for this alongside the 30 requests/min limit (developer-plan limits for all three candidates: 30 requests/min, 1K requests/day, 8K tokens/min, 200K tokens/day; [rate limits](https://console.groq.com/docs/rate-limits)).
+- **Smoke test (2026-09-15):** `uv run python -m src.groq_smoke` returned HTTP 200, reply `'hello from Groq'`, finish reason `stop`, exit 0. With `GROQ_API_KEY` blank it makes no call and exits 1.
