@@ -1,0 +1,57 @@
+- id: "1"
+  title: Dataset discovery, brand lock, and Groq smoke test
+  description: >-
+    Locate a public review dataset that clears the volume bar, finalize the brand set,
+    confirm the Groq model string with a trivial call, and write the README problem statement.
+    Resolves SPEC open questions 1-3 (see data-schema.md, delivery-phases.md Phase 0).
+  spec_checkpoint: true
+  done_checkpoint: true
+  invoke_dev_with: >-
+    Scaffold, requirements.txt, .gitignore, .env.example, LICENSE and .venv (Python 3.11)
+    already exist; do not recreate.
+- id: "2"
+  title: Download and cleaning pipeline with data quality report
+  description: >-
+    Implement data/download_data.py and src/clean.py to produce reviews_clean.parquet in the
+    target schema with the quality report (CAP-1, data-schema.md).
+  spec_checkpoint: true
+  done_checkpoint: true
+- id: "3"
+  title: EDA notebook with written insights
+  description: >-
+    Build notebooks/01_eda.ipynb covering every chart in eda-charts.md, each with a takeaway,
+    plus a running insights cell (CAP-2).
+  spec_checkpoint: true
+  done_checkpoint: false
+- id: "4"
+  title: Index and filtered retrieval
+  description: >-
+    Implement src/index.py and src/retrieve.py: persistent Chroma index with metadata and top-k
+    retrieval with brand/rating filters, hand-tested on 5-10 queries (CAP-3, rag-design.md).
+  spec_checkpoint: true
+  done_checkpoint: false
+  invoke_dev_with: >-
+    Test retrieval in isolation; no generation code in this story.
+- id: "5"
+  title: Grounded, cited generation
+  description: >-
+    Implement src/generate.py: grounding and citation prompt over retrieved reviews, refusal,
+    empty-retrieval and rate-limit handling (CAP-4, rag-design.md).
+  spec_checkpoint: true
+  done_checkpoint: true
+- id: "6"
+  title: Evaluation gold set, metrics, and results write-up
+  description: >-
+    Write eval/gold_questions.json, src/evaluate.py, and eval/results.md with hit rate,
+    faithfulness, refusal, and failure commentary (CAP-5, evaluation.md).
+  spec_checkpoint: true
+  done_checkpoint: true
+- id: "7"
+  title: Streamlit app, Cloud deploy, and README
+  description: >-
+    Build and deploy app/streamlit_app.py showing both layers, then complete the README,
+    limitations, and application paragraph (CAP-6, CAP-7, documentation.md).
+  spec_checkpoint: false
+  done_checkpoint: false
+  invoke_dev_with: >-
+    Pin requirements.txt from the working .venv before deploying.

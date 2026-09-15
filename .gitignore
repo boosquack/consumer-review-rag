@@ -1,0 +1,23 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Vector store
+.chroma/
+
+# Raw data (large; use data/download_data.py)
+data/raw/*
+!data/raw/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# BMAD personal overrides
+_bmad/**/*.user.toml
+
+# macOS
+.DS_Store

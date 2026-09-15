@@ -1,0 +1,19 @@
+# Data + EDA
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.8
+seaborn>=0.13
+jupyter>=1.0
+scikit-learn>=1.4
+
+# Sentiment for EDA
+vaderSentiment>=3.3.2
+
+# RAG
+sentence-transformers>=3.0
+chromadb>=0.5
+groq>=0.11
+
+# App + config
+streamlit>=1.38
+python-dotenv>=1.0
