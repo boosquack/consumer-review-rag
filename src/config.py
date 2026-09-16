@@ -19,6 +19,35 @@ DATASET_HF_REPO = "McAuley-Lab/Amazon-Reviews-2023"
 DATASET_CATEGORY = "Beauty_and_Personal_Care"
 DATASET_REVIEWS_FILE = f"raw/review_categories/{DATASET_CATEGORY}.jsonl"
 DATASET_META_FILE = f"raw/meta_categories/meta_{DATASET_CATEGORY}.jsonl"
+DATASET_RESOLVE_BASE = f"https://huggingface.co/datasets/{DATASET_HF_REPO}/resolve/main/"
+DATASET_REVIEWS_URL = DATASET_RESOLVE_BASE + DATASET_REVIEWS_FILE
+DATASET_META_URL = DATASET_RESOLVE_BASE + DATASET_META_FILE
+# Content-Length measured 2026-09-16; used only as a progress-bar total, so a
+# drifting upstream size costs a wrong ETA, never a wrong result.
+DATASET_REVIEWS_BYTES = 11_021_458_876
+DATASET_META_BYTES = 2_835_194_976
+
+# --- Pipeline artifacts ---------------------------------------------------------
+# Everything under data/raw/ is git-ignored and rebuilt by data/download_data.py.
+RAW_BRAND_MAP_JSON = DATA_RAW_DIR / "brand_map.json"
+RAW_FILTERED_JSONL = DATA_RAW_DIR / "reviews_filtered.jsonl"
+RAW_MANIFEST_JSON = DATA_RAW_DIR / "reviews_filtered.manifest.json"
+CLEAN_PARQUET = DATA_PROCESSED_DIR / "reviews_clean.parquet"
+# The quality report is a deliverable in its own right, so it is persisted next
+# to the parquet rather than only printed; stories 3 and 6 read these numbers.
+CLEAN_REPORT_JSON = DATA_PROCESSED_DIR / "quality_report.json"
+
+# --- Cleaning rules -------------------------------------------------------------
+# Source timestamps are epoch milliseconds (UTC). Anything outside these years is
+# treated as unparseable: the row is kept, but lands in the undated bucket.
+REVIEW_YEAR_MIN = 2000
+REVIEW_YEAR_MAX = 2026
+UNDATED_BUCKET = "undated"
+# Normalized-text dedup applies only at or above this length, so that genuine
+# short praise ("Love it!") survives in a corpus that is ~2/3 five-star.
+DEDUP_MIN_TEXT_CHARS = 50
+# Digest size for the derived review_id; 8 bytes -> 16 hex characters.
+REVIEW_ID_DIGEST_BYTES = 8
 
 # --- Brand set -----------------------------------------------------------------
 # Canonical brand name -> regex matched against the product metadata `store`
