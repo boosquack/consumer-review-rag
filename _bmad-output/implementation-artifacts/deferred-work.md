@@ -1,3 +1,4 @@
 - source_spec: `_bmad-output/specs/spec-review-intelligence/stories/1-dataset-discovery-brand-lock-groq-smoke-test.md`
   summary: Run `bmad-spec` so SPEC.md (Open Questions 1–3, Assumptions) and stack.md (Generation row) follow PLAN.md's locked dataset, brand set, and `openai/gpt-oss-120b` model instead of "current Llama instruct model".
   evidence: Story 1 locked these decisions in PLAN.md §3 and §13. `SPEC.md` and `stack.md:5` still describe a Llama model, which Groq shut down on 2026-08-16. AGENTS.md forbids hand-editing the spec, so stories 2–7 read a stale model decision until `bmad-spec` runs.
+  status: resolved 2026-09-16 by a `bmad-spec` update run. SPEC.md now carries the locked brand set, corpus, and `openai/gpt-oss-120b` as constraints; stack.md:5 names the model; data-schema.md's sourcing section was re-derived to the locked source. Only the near-duplicate rule and the chunk-split threshold remain open, owned by stories 2 and 4.

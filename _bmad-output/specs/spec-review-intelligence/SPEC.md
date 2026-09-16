@@ -24,7 +24,7 @@ An opportunity and a deadline. Kent Joshua P. Alvarez is applying for P&G's AI E
 ## Capabilities
 
 - **CAP-1**
-  - **intent:** A reproducible pipeline produces a cleaned review corpus for 2–3 P&G brands in the target schema, with a data quality report.
+  - **intent:** A reproducible pipeline produces a cleaned review corpus for the three locked P&G haircare brands in the target schema, with a data quality report.
   - **success:** Running the download and clean scripts yields `data/processed/reviews_clean.parquet`. The report shows total rows, rows per brand, date range, and percent dropped with reasons (see `data-schema.md`).
 - **CAP-2**
   - **intent:** An analyst can see rating, volume, sentiment, and theme patterns per brand, each with a written insight.
@@ -48,9 +48,11 @@ An opportunity and a deadline. Kent Joshua P. Alvarez is applying for P&G's AI E
 ## Constraints
 
 - One-week timebox (week of 2026-09-15). If a day slips, protect evaluation and limitations first, then deployment, then extra EDA charts, then extra brands.
-- P&G brands only, preferably from one category. Finalize the brand set only after inspecting what the dataset actually has.
-- Use an existing public dataset. Scrape only if public data fails, and time-box scraping to half a day at most.
+- The brand set is Head & Shoulders, Pantene, and Herbal Essences (haircare), locked against measured coverage: 9,868 / 29,670 / 16,325 written reviews before cleaning, 55,863 in total.
+- The corpus is Amazon Reviews 2023 (`McAuley-Lab/Amazon-Reviews-2023`, category `Beauty_and_Personal_Care`; Hou et al. 2024, arXiv:2403.03952). Its files are 11 GB (reviews) and 2.8 GB (metadata), so the download step streams and filters to the brand set instead of storing either file whole. Reviews join to metadata on `parent_asin`, and the brand lives in the metadata `store` field.
+- The dataset publishes no terms of use for the data itself, so the project cites Hou et al. 2024 and never redistributes the raw files.
 - Zero-cost stack: Groq free tier (30 requests/min, so backoff is required), local embeddings with no second API key, and Streamlit Community Cloud hosting.
+- Generation runs on Groq `openai/gpt-oss-120b` at temperature 0.1. It is a reasoning model, so its reasoning tokens count against the free-tier 8K tokens/min cap (53 of 66 completion tokens in the Phase 0 smoke test); generation must budget for that alongside the request-rate limit.
 - Python 3.11. Not 3.13, because of ML wheel gaps and Streamlit Cloud support.
 - Never commit `GROQ_API_KEY`. It lives in a git-ignored `.env` locally and in Streamlit Secrets for deployment; `.env.example` documents the key name.
 - Pipeline logic lives in importable modules under `src/`. The notebook and the app call the same functions, and the app never duplicates retrieval logic.
@@ -75,14 +77,9 @@ An opportunity and a deadline. Kent Joshua P. Alvarez is applying for P&G's AI E
 
 ## Assumptions
 
-- The working brand set is Head & Shoulders, Pantene, and Herbal Essences. If haircare coverage is thin, fall back to grooming (Gillette, Oral-B) or skincare (Olay).
-- The Amazon Reviews Beauty/Personal Care subsets are the most likely source of P&G-brand rows.
 - The machine is an Apple Silicon MacBook; embeddings run on CPU or MPS with no GPU.
 
 ## Open Questions
 
-- Which dataset will be used, and does it clear the volume bar (a few hundred reviews per brand, ideally 1,000+)?
-- What is the final brand set once the data has been inspected?
-- What is the current Groq Llama instruct model string?
 - Beyond exact-text dedup, what rule handles near-duplicate reviews? Decide in the data story.
 - Above what length is a review split into chunks?

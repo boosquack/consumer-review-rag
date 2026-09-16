@@ -2,7 +2,7 @@
 
 | Concern | Choice | Reason |
 |---|---|---|
-| Generation | Groq, current Llama instruct model, low temperature | Free tier, known rate limits (30 req/min) |
+| Generation | Groq `openai/gpt-oss-120b`, temperature 0.1 | Free tier, known rate limits (30 req/min). Groq shut down its Llama chat models on 2026-08-16 and names this as the replacement. Reasoning model: its reasoning tokens count against the 8K tokens/min cap |
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2`, local | Free, 384-dim, fast on Apple Silicon CPU/MPS, no second key |
 | Vector store | ChromaDB persistent client, local directory (`.chroma/`) | Fastest solo setup, persists to disk, loads in Streamlit |
 | Sentiment (EDA) | `vaderSentiment` | Pretrained lexicon heuristic; no model training |

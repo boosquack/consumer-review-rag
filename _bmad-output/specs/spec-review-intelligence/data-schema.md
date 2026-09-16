@@ -1,11 +1,14 @@
 # Data schema and cleaning
 
-## Sourcing order
+## Source
 
-1. Search Kaggle and public sources for personal-care, haircare, or Amazon review datasets (Amazon Reviews Beauty / Personal Care subsets are the most likely).
-2. Filter rows where the product title or brand field matches a chosen brand, using a case-insensitive substring match on brand names and common product-line names.
-3. If no single dataset covers all brands with enough volume, drop to two brands or combine two datasets that share a schema.
-4. Scrape only as a last resort, small and respectful, and for half a day at most.
+Locked 2026-09-15: Amazon Reviews 2023, Hugging Face repo `McAuley-Lab/Amazon-Reviews-2023`, category `Beauty_and_Personal_Care` (Hou et al. 2024, arXiv:2403.03952). The `All_Beauty` subset was rejected as too thin for per-brand trends (13 / 70 / 34 matching products).
+
+- Reviews are in `raw/review_categories/Beauty_and_Personal_Care.jsonl` (11 GB, 23,911,390 reviews); product metadata in `raw/meta_categories/meta_Beauty_and_Personal_Care.jsonl` (2.8 GB, 1,028,914 products). Stream and filter both; never store either whole.
+- Reviews join to metadata on `parent_asin`. The brand lives in the metadata `store` field.
+- A product belongs to a brand when its `store` or `title` matches that brand's pattern in `src/config.py` (patterns are already case-insensitive via inline `(?i)`).
+- Products matched by `title` but not `store` (40 / 15 / 71) can be third-party listings that merely name the brand. Deciding whether to keep them belongs to the cleaning story.
+- Scraping is not used. It stays a last resort only if the locked source fails: small, respectful, half a day at most.
 
 ## Target schema
 
