@@ -49,6 +49,14 @@ DEDUP_MIN_TEXT_CHARS = 50
 # Digest size for the derived review_id; 8 bytes -> 16 hex characters.
 REVIEW_ID_DIGEST_BYTES = 8
 
+# --- Rating bands ------------------------------------------------------------------
+# Single source of truth for star-rating bands, shared by EDA and retrieval filters.
+RATING_BANDS = {
+    "low": (1, 2),
+    "mid": (3,),
+    "high": (4, 5),
+}
+
 # --- EDA -------------------------------------------------------------------------
 NOTEBOOK_EDA = PROJECT_ROOT / "notebooks" / "01_eda.ipynb"
 # Brand-months below this count are drawn de-emphasized and kept out of the
@@ -60,9 +68,10 @@ EDA_PARTIAL_YEAR = 2023
 # <= NEG is negative, anything between (including 0.0) is neutral.
 VADER_POS = 0.05
 VADER_NEG = -0.05
-# Rating bands for top terms; 3 stars sits in neither band.
-EDA_LOW_RATINGS = (1, 2)
-EDA_HIGH_RATINGS = (4, 5)
+# Rating bands for top terms; 3 stars sits in neither band. Both point at
+# RATING_BANDS so EDA and retrieval filters can never disagree.
+EDA_LOW_RATINGS = RATING_BANDS["low"]
+EDA_HIGH_RATINGS = RATING_BANDS["high"]
 EDA_TOP_TERMS = 15
 # Added to the English stopword list so top terms show themes rather than the
 # brand or product category every review shares.
@@ -100,6 +109,23 @@ BRANDS = {
     "Pantene": r"(?i)pantene",
     "Herbal Essences": r"(?i)herbal\s+essence",
 }
+
+# --- Indexing and retrieval ---------------------------------------------------------
+# Local embeddings, no API key. Vectors are L2-normalized and the collection uses
+# cosine space, so a hit's distance is 1 - cosine similarity.
+EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+EMBED_BATCH_SIZE = 128
+CHROMA_COLLECTION = "reviews"
+# The model's window, special tokens included ([CLS] and [SEP] take 2). A review
+# is split only when its normalized text does not fit (928 reviews, 1.72%).
+CHUNK_MAX_TOKENS = 256
+# Tokens shared by consecutive chunks, so a sentence cut at a boundary is still
+# seen whole by one of them.
+CHUNK_OVERLAP_TOKENS = 32
+# Reviews returned per query (rag-design.md: start at 6, tune within 5-8).
+RETRIEVAL_K = 6
+# Chunks fetched per requested review before collapsing to one hit per review.
+RETRIEVAL_OVERFETCH = 3
 
 # --- Generation (Groq) ---------------------------------------------------------
 GROQ_API_KEY_ENV = "GROQ_API_KEY"
