@@ -131,3 +131,15 @@ RETRIEVAL_OVERFETCH = 3
 GROQ_API_KEY_ENV = "GROQ_API_KEY"
 GROQ_MODEL = "openai/gpt-oss-120b"
 GROQ_TEMPERATURE = 0.1
+# gpt-oss-120b is a reasoning model: its reasoning tokens count against the
+# free-tier 8K tokens/min cap, so effort stays low and completions are capped.
+GROQ_REASONING_EFFORT = "low"
+GROQ_MAX_COMPLETION_TOKENS = 1024
+# Retries the SDK makes itself (exponential backoff, honours retry-after) before
+# generation reports status "rate_limited" or "error".
+GROQ_MAX_RETRIES = 3
+# Seconds per request attempt, so retries cannot block an app user for minutes.
+GROQ_TIMEOUT_S = 30
+# The fixed sentence the model must reply with when the reviews do not cover the
+# question; generation detects refusals by this sentence.
+REFUSAL_TEXT = "The reviews do not cover this."
