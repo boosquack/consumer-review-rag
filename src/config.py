@@ -49,6 +49,47 @@ DEDUP_MIN_TEXT_CHARS = 50
 # Digest size for the derived review_id; 8 bytes -> 16 hex characters.
 REVIEW_ID_DIGEST_BYTES = 8
 
+# --- EDA -------------------------------------------------------------------------
+NOTEBOOK_EDA = PROJECT_ROOT / "notebooks" / "01_eda.ipynb"
+# Brand-months below this count are drawn de-emphasized and kept out of the
+# average-rating trend line, so a 3-review month cannot swing the trend.
+EDA_MIN_MONTH_REVIEWS = 30
+# The corpus snapshot ends 2023-09-01, so this year is labelled partial.
+EDA_PARTIAL_YEAR = 2023
+# Standard VADER compound cutoffs (Hutto & Gilbert 2014): >= POS is positive,
+# <= NEG is negative, anything between (including 0.0) is neutral.
+VADER_POS = 0.05
+VADER_NEG = -0.05
+# Rating bands for top terms; 3 stars sits in neither band.
+EDA_LOW_RATINGS = (1, 2)
+EDA_HIGH_RATINGS = (4, 5)
+EDA_TOP_TERMS = 15
+# Added to the English stopword list so top terms show themes rather than the
+# brand or product category every review shares.
+EDA_EXTRA_STOPWORDS = (
+    # Brand-name tokens.
+    "head", "shoulders", "pantene", "pro", "herbal", "essence", "essences",
+    # Generic product tokens every haircare review shares.
+    "shampoo", "shampoos", "conditioner", "conditioners", "product", "products",
+    "hair", "use", "used", "using",
+    # Filler and generic praise that tops every cell and hides the themes
+    # (measured: without these, "like", "just", "good" led all six cells).
+    "like", "just", "really", "did", "does", "good", "great", "love", "time",
+    "buy", "bought", "make", "makes", "feel", "get", "got", "try", "tried",
+    "year", "years", "im", "dont",
+    # Contraction fragments left by word tokenization, and <br> markup in the source.
+    "don", "didn", "doesn", "isn", "wasn", "won", "ve", "ll", "br",
+)
+# Fixed categorical order (validated default palette: blue, orange, aqua), so a
+# brand keeps its colour in every chart and in the app.
+EDA_BRAND_COLORS = {
+    "Head & Shoulders": "#2a78d6",
+    "Pantene": "#eb6834",
+    "Herbal Essences": "#1baf7a",
+}
+# Sentiment bands: diverging poles with a neutral gray midpoint.
+EDA_SENTIMENT_COLORS = {"negative": "#e34948", "neutral": "#b5b4ae", "positive": "#2a78d6"}
+
 # --- Brand set -----------------------------------------------------------------
 # Canonical brand name -> regex matched against the product metadata `store`
 # field or the product `title`. The inline (?i) makes each pattern
