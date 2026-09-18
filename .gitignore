@@ -16,6 +16,11 @@ data/raw/*
 # Processed data (rebuilt by src/clean.py)
 data/processed/*
 !data/processed/.gitkeep
+# Committed for Streamlit Cloud cold start (deployment data strategy, Option A);
+# the app builds the .chroma/ index from this at startup, and the EDA panel
+# reads the quality report directly.
+!data/processed/reviews_clean.parquet
+!data/processed/quality_report.json
 
 # Jupyter
 .ipynb_checkpoints/

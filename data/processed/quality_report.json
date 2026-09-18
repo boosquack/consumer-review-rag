@@ -1,0 +1,39 @@
+{
+  "sample": false,
+  "total_input": 54741,
+  "total_rows": 53872,
+  "dropped_total": 869,
+  "dropped_pct": 1.59,
+  "drops": {
+    "no_brand_match": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "empty_text": {
+      "count": 43,
+      "pct": 0.08
+    },
+    "invalid_rating": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "duplicate_review_id": {
+      "count": 456,
+      "pct": 0.83
+    },
+    "duplicate_text": {
+      "count": 370,
+      "pct": 0.68
+    }
+  },
+  "rows_per_brand": {
+    "Head & Shoulders": 9363,
+    "Pantene": 28977,
+    "Herbal Essences": 15532
+  },
+  "date_range": {
+    "min": "2005-01-05T15:52:58+00:00",
+    "max": "2023-09-01T02:53:25.224000+00:00"
+  },
+  "undated": 0
+}

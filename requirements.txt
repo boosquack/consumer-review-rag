@@ -1,24 +1,24 @@
 # Data pipeline (data/download_data.py, src/clean.py)
-requests>=2.32
-tqdm>=4.66
-pyarrow>=16.0
+requests==2.34.2
+tqdm==4.70.1
+pyarrow==25.0.1
 
 # Data + EDA
-pandas>=2.2
-numpy>=1.26
-matplotlib>=3.8
-seaborn>=0.13
-jupyter>=1.0
-scikit-learn>=1.4
+pandas==3.0.5
+numpy==2.4.6
+matplotlib==3.11.2
+seaborn==0.13.2
+jupyter==1.1.1
+scikit-learn==1.9.1
 
 # Sentiment for EDA
-vaderSentiment>=3.3.2
+vaderSentiment==3.3.2
 
 # RAG
-sentence-transformers>=3.0
-chromadb>=0.5
-groq>=1.7
+sentence-transformers==6.0.1
+chromadb==1.5.9
+groq==1.7.0
 
 # App + config
-streamlit>=1.38
-python-dotenv>=1.0
+streamlit==1.64.0
+python-dotenv==1.2.3

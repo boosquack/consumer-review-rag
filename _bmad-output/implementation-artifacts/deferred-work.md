@@ -26,3 +26,7 @@
 - source_spec: `_bmad-output/specs/spec-review-intelligence/stories/2-download-cleaning-pipeline-quality-report.md`
   summary: Consider a test pinning the git-ignore rules for the two generated artifacts, so an edit to `.gitignore` cannot quietly make the corpus committable.
   evidence: `git check-ignore -v` resolves both `data/processed/reviews_clean.parquet` and `data/processed/quality_report.json` to `.gitignore:17`, and `git ls-files data/` returns only the two `.gitkeep` files plus the tracked script, but nothing in the suite asserts it; the fourth acceptance criterion is verified only by hand.
+
+- source_spec: `_bmad-output/specs/spec-review-intelligence/stories/7-streamlit-app-cloud-deploy-readme.md`
+  summary: Update AGENTS.md's "TODO (stories 3 and 7, verify on first refresh)" line — both the notebook and the Streamlit app launch commands are now verified — to record that story 7 is done.
+  evidence: AGENTS.md still reads the TODO as open even though this story's own dev notes record a real `uv run streamlit run app/streamlit_app.py` boot and a real `uv run jupyter lab` capable notebook. Deferred rather than patched because the fix edits an agent-context file, which this workflow routes to defer by rule.
