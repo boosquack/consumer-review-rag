@@ -1,0 +1,25 @@
+{
+  "answers_run_at": "2026-09-16T16:12:28+00:00",
+  "grader": "Implementing agent (Claude), not an independent grader. Each saved answer in eval/answers.json was read against the text of the reviews it cites (the chunk the model saw, looked up by review_id). Pass = every claim is stated by the cited reviews, with no invented or overstated claims; a refusal passes when the retrieved reviews indeed do not answer the question.",
+  "graded_at": "2026-09-16",
+  "grades": {
+    "q01": {"pass": true, "note": "Claims match [1][2][3][5]; the price remark about review 6 is hedged. Thin: 3 of the 6 hits are content-free anger, the model skipped the concrete 'dry and brittle hair' complaint in [4], and it wrote 'Review 6' in prose instead of [6], so that citation was not parsed."},
+    "q02": {"pass": true, "note": "Refusal is faithful: none of the 6 retrieved reviews mentions a strong scent or headaches ([4] says the scent is faint). It is still a wrong outcome for the user, caused by the retrieval miss (0/6 relevant); see false refusals."},
+    "q03": {"pass": true, "note": "All 6 cited reviews report hair loss or hair falling out. The opening 'Yes' reads as a general verdict drawn from 6 low-band reviews, and it drops [1]'s own hedge ('cant 100% sure it causes this')."},
+    "q04": {"pass": true, "note": "All 6 cited reviews describe leaking, cracked, or busted bottles on arrival."},
+    "q05": {"pass": false, "note": "Over-claim: says reviewers call Pantene 'safe' for color-treated hair, citing [1][2][4], but none of them says safe; they say it is great or works well on colored hair. All evidence is 5-star (high-band filter), so a 'Yes' verdict is one-sided by construction."},
+    "q06": {"pass": true, "note": "Quotes from [1][3][4][6] are accurate and [3][4] do say dandruff is gone. 'Eliminates' is strong for [1] ('helped in past') and [6] ('helps'), and the doubtful 3-star [2] is omitted."},
+    "q07": {"pass": false, "note": "Over-generalization: 'Pantene receives more complaints about residue ... than Herbal Essences' is a brand-frequency claim drawn from a 4 vs 2 split in 6 retrieved reviews. Top-6 similarity cannot measure which brand gets more complaints. [1] is also a hairspray, not a shampoo."},
+    "q08": {"pass": true, "note": "Quotes from [1][2][4][5] are accurate and attributed to the right brands. Thin: skips [6] (Pantene, barely any fragrance) and gives no real comparison."},
+    "q09": {"pass": true, "note": "Split verdict is supported: good value [2][3], too expensive or not worth it [5][6]. The quote 'good value' comes from [3] only, cited jointly with [2]."},
+    "q10": {"pass": false, "note": "Misrepresents sources: says [1][2][3][5] report the shampoo 'left their scalp itchy or made it worse', but those four say it did not help an existing itchy scalp. Only [6] (dry, itchy after use) and [4] (burns) report irritation caused by the product, so the concluding 'can cause' rests on 2 reviews, not 6."},
+    "q11": {"pass": true, "note": "[1] and [2] explicitly say the formula changed for the worse, and [3] says it is not the formula Pantene used for 20 years. [5] is about one product being worse than other Pantene products, which is a loose fit for 'past results'."},
+    "q12": {"pass": false, "note": "Two errors. [2] is cited for sulfates 'drying hair and stripping oils', but [2] is about a product mislabelled as sulfate-free. [3] ('Don't buy non Sulfate shampoo') is read as 'concern about sulfates', the opposite of what it says."},
+    "q13": {"pass": true, "note": "Each listed complaint is in the cited reviews (greasy [1][4], does nothing [2], dry or brittle [3][5][6], overpowering scent and headache [6]). It does not claim frequencies, but 6 reviews cannot establish 'most common'. It omits the hair loss mentioned in [3]."},
+    "q14": {"pass": true, "note": "Faithful but empty: all 6 hits are generic 'I love Pantene', so the answer says nothing about what people like. 'Use them regularly' fits [1][3][6] only, but it is cited to all six."},
+    "u01": {"pass": true, "note": "Correct refusal; retrieved reviews mention US prices, Costco, and Amazon deals, not Japan."},
+    "u02": {"pass": true, "note": "Correct refusal; no retrieved review mentions clinical studies."},
+    "u03": {"pass": true, "note": "Correct refusal; no retrieved review mentions Redken."},
+    "u04": {"pass": true, "note": "Correct refusal, though the prompt carries no review dates, so the model could not have checked for 2025 reviews anyway."}
+  }
+}

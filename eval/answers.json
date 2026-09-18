@@ -1,0 +1,1784 @@
+{
+  "run_at": "2026-09-16T16:12:28+00:00",
+  "gold_frozen_at": "2026-09-16T16:12:00Z",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.1,
+  "reasoning_effort": "low",
+  "k": 6,
+  "pattern_counts": {
+    "q01": 1583,
+    "q02": 335,
+    "q03": 232,
+    "q04": 869,
+    "q05": 589,
+    "q06": 2506,
+    "q07": 312,
+    "q08": 16211,
+    "q09": 384,
+    "q10": 213,
+    "q11": 126,
+    "q12": 738,
+    "q13": 3603,
+    "q14": 9982
+  },
+  "pacing_slept_s": 99.9,
+  "summary": {
+    "questions": 18,
+    "answerable": 14,
+    "hit_at_k": {
+      "value": 0.8571428571428571,
+      "n": 12,
+      "of": 14
+    },
+    "precision_at_k": {
+      "value": 0.7023809523809524,
+      "of": 14
+    },
+    "excluded": [],
+    "citation_validity": {
+      "value": 1.0,
+      "n": 13,
+      "of": 13
+    },
+    "uncited_rate": {
+      "value": 0.0,
+      "n": 0,
+      "of": 13
+    },
+    "refusal_accuracy": {
+      "value": 1.0,
+      "n": 4,
+      "of": 4
+    },
+    "false_refusal_rate": {
+      "value": 0.07142857142857142,
+      "n": 1,
+      "of": 14
+    }
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "question": "what do 1-star Pantene reviewers complain about",
+      "type": "filtered",
+      "brand": "Pantene",
+      "rating_band": "low",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          false,
+          false,
+          false,
+          true,
+          true,
+          false
+        ],
+        "hit": 1,
+        "precision": 0.3333333333333333
+      },
+      "status": "answered",
+      "text": "- The product is described as “horrible,” “awful,” and overall disappointing, leading reviewers to say they will never buy Pantene again[1][2].  \n- One reviewer says there is “nothing good about this one” and expresses strong disappointment[3].  \n- Another 1‑star reviewer says the new formula “does **not** work,” leaving hair “dull and super staticky and extremely flyaway,” with “no volume, no shine, no manageability”[5].  \n- The same reviewer calls the change a “huge disappointment” and criticizes Pantene for discontinuing a line they preferred[5].  \n- Review 6 contains a vague comment about “Pantene is my favorite not from this supplier way to much money,” which may hint at a price‑related complaint, though the statement is unclear.",
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "15d77e5108bbdb24",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "Will never purchase this product again!!  The cheaper versions work so much better. I love Pantene products but this product is HORRIBLE. No stars at all"
+        },
+        {
+          "number": 2,
+          "review_id": "b5a963dbb09bd3b2",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "If I could give it zero stars I would.  I will NEVER buy another Pantene product again.  Horrible product Awful company!!!!!"
+        },
+        {
+          "number": 3,
+          "review_id": "4de72f915d196528",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "nothing good about this one... very disappointed with Pantene"
+        },
+        {
+          "number": 4,
+          "review_id": "c95b6ec0e2da6a93",
+          "brand": "Pantene",
+          "rating": 2,
+          "relevant": true,
+          "review_text": "I began using the product Pantene several years ago.  My mother and I have been trying to find products that were going to give my hair the proper nourishment and care that certain products just weren’t giving me.  We went to a local Target and saw the product on the shelves.  We saw that there was "
+        },
+        {
+          "number": 5,
+          "review_id": "b88d274437d099aa",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I have been a faithful user of the Pantene Volume line for a very LONG time. They have discontinued that line in favor of this \"new & improved\" line. Well, in good faith I tried it for a couple weeks.<br /><br />SORRY PANTENE, THIS STUFF DOES **NOT** WORK. This \"new\" formula leaves my hair dull and "
+        },
+        {
+          "number": 6,
+          "review_id": "db49b61724eca661",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "Pantene is my favorite not from this supplier way to much money"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 283,
+        "prompt_tokens": 869,
+        "total_tokens": 1152,
+        "completion_time": 0.59646124,
+        "completion_tokens_details": {
+          "reasoning_tokens": 96
+        },
+        "prompt_time": 0.046493021,
+        "queue_time": 0.479129684,
+        "total_time": 0.642954261
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:41+00:00"
+    },
+    {
+      "id": "q02",
+      "question": "Herbal Essences smell is too strong or gives headaches",
+      "type": "factual",
+      "brand": "Herbal Essences",
+      "rating_band": null,
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hit": 0,
+        "precision": 0.0
+      },
+      "status": "refused",
+      "text": "The reviews do not cover this.",
+      "citation_numbers": [],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "c3538c9de4fd330c",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "Herbal essences body smell really good will but again reminds me of the shampoo. Got it in the mail faster then I thought thank you"
+        },
+        {
+          "number": 2,
+          "review_id": "f33280fe7b661e78",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "Worst smelling herbal essences ever. Blehh."
+        },
+        {
+          "number": 3,
+          "review_id": "7862b53222212c0d",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "Best smelling Herbal Essence in my opinion."
+        },
+        {
+          "number": 4,
+          "review_id": "2a81ac7fd6409c90",
+          "brand": "Herbal Essences",
+          "rating": 4,
+          "relevant": false,
+          "review_text": "Love herbal essence but this one ain’t it. The smell is faint and doesn’t last through the day. I shower and wash my hair every morning but this shampoo looks best on day 2 and it doesn’t have enough sent to last that long."
+        },
+        {
+          "number": 5,
+          "review_id": "d022a1207c644685",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "The one thing that sets Herbal Essence apart from others is the smell.  They always just smell amazing and this one did not disappoint.  I love it.  It also really makes my hair feel nice and soft and clean after using.  I like using the combination of the shampoo with the conditioner."
+        },
+        {
+          "number": 6,
+          "review_id": "1c6d5e159f317ba7",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "Best smelling herbal essence out there. Will be ordering again for sure."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 582,
+        "total_tokens": 629,
+        "completion_time": 0.112372543,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_time": 0.033261742,
+        "queue_time": 0.052658298,
+        "total_time": 0.145634285
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:42+00:00"
+    },
+    {
+      "id": "q03",
+      "question": "Does the shampoo make hair fall out or cause hair loss?",
+      "type": "filtered",
+      "brand": null,
+      "rating_band": "low",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 0.8333333333333334
+      },
+      "status": "answered",
+      "text": "Yes, multiple reviewers say the shampoo caused hair to fall out or led to hair loss[1][2][3][4][5][6].",
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "5a6f9bbf1146b14f",
+          "brand": "Pantene",
+          "rating": 2,
+          "relevant": true,
+          "review_text": "after using this shampoo, i got serious hair loss. even i cant 100%sure it causes this result. but it must have something do with it."
+        },
+        {
+          "number": 2,
+          "review_id": "34474760e3c9743d",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "NEVER IN MY LIFE has a product made my hair fall out. I have been using Pantene Pro-V Smooth and Sleek Shampoo and Conditione for about 6 months. In the last couple of weeks I have noticed some hair coming out when I would run my fingers through my hair to work in the conditioner in the shower and t"
+        },
+        {
+          "number": 3,
+          "review_id": "bd74771bf8a961f7",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "I started to loss hair after a week of using this shampoo,"
+        },
+        {
+          "number": 4,
+          "review_id": "900e19d577bb295f",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "This shampoo made my hair fall out more in the shower and my scalp was really dry after using it."
+        },
+        {
+          "number": 5,
+          "review_id": "5e693cf358eb581f",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "The shampoo makes your hair fall out. The conditioner is fine."
+        },
+        {
+          "number": 6,
+          "review_id": "593e1520b53738d9",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I originally purchased the Herbal Essence Hello Hydration shampoo and conditioner because I noticed all of the good ratings, I remembered the television advertisements and because the product contains coconut which is supposed to be good for hair health. When the product arrived, I noticed that the "
+        }
+      ],
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 652,
+        "total_tokens": 715,
+        "completion_time": 0.140008196,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_time": 2.218582808,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "queue_time": 0.403182979,
+        "total_time": 2.358591004
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:45+00:00"
+    },
+    {
+      "id": "q04",
+      "question": "Did the package arrive leaking or with a broken bottle?",
+      "type": "factual",
+      "brand": null,
+      "rating_band": null,
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 1.0
+      },
+      "status": "answered",
+      "text": "Yes, several reviewers reported that the package arrived leaking or with a broken bottle: reviews [1][2][3][4][5][6] all mention leakage or damage to the bottle upon arrival.",
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "3e43fdf037ac418a",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "When product arrived you can see that a bottle was leaking. Upon opening package - ALL the bottle were broken at the cap and leaking."
+        },
+        {
+          "number": 2,
+          "review_id": "0026d556b68a579c",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "Half bottles were waisted, package arrived leaked."
+        },
+        {
+          "number": 3,
+          "review_id": "32c5fa742c14ec0e",
+          "brand": "Pantene",
+          "rating": 4,
+          "relevant": true,
+          "review_text": "One of the bottle was cracked and leaked more than half into the plastic bag it was wrapped in."
+        },
+        {
+          "number": 4,
+          "review_id": "8dc9f0273aad00b5",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "Leaked all over box, bottle was empty when I got it"
+        },
+        {
+          "number": 5,
+          "review_id": "2fac1489e9379e77",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "bottle was received busted"
+        },
+        {
+          "number": 6,
+          "review_id": "502c9f4f0534bed1",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Packaging came damaging & leaking. Washed off the bottles. Product works great."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 94,
+        "prompt_tokens": 498,
+        "total_tokens": 592,
+        "completion_time": 0.314126034,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_time": 0.014739726,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "queue_time": 0.413296782,
+        "total_time": 0.32886576
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:46+00:00"
+    },
+    {
+      "id": "q05",
+      "question": "Is Pantene safe for color-treated hair?",
+      "type": "filtered",
+      "brand": "Pantene",
+      "rating_band": "high",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "hit": 1,
+        "precision": 0.8333333333333334
+      },
+      "status": "answered",
+      "text": "Yes, reviewers say Pantene works well and is safe for color‑treated hair[1][2][4].",
+      "citation_numbers": [
+        1,
+        2,
+        4
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "d32c16fdec59bcf0",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "love pantene for my damaged colored hair. would highly recommend"
+        },
+        {
+          "number": 2,
+          "review_id": "361a6a385f3578f3",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "I tried this on my color-treated hair, which tends to dry out. Pantene is a miracle worker, once a week is all I need to keep my hair looking healthy and feeling soft."
+        },
+        {
+          "number": 3,
+          "review_id": "e86441f84bd88c08",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Pantene has always had quality products in my opinion, and I have used them for years. This sulfate free shampoo states that it works well on color treated hair, and I am sure it does. I have never colored my hair, but I do notice that as I am getting older, I have courser hair that needs to be tame"
+        },
+        {
+          "number": 4,
+          "review_id": "36670593cebb9214",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Great for color treated hair. Leaves my soft and shiney and full of body. Have tried other products but prefer Pantene Pro-V."
+        },
+        {
+          "number": 5,
+          "review_id": "a4e0c951e5092bad",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "I can't find Pantene 2 and 1 for color treated hair anywhere, but I found it on Amazon and I'm very pleased with it."
+        },
+        {
+          "number": 6,
+          "review_id": "a0254e301264e08a",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "Pantene is great for hair"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 602,
+        "total_tokens": 668,
+        "completion_time": 0.137002602,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_time": 1.6815208350000002,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "queue_time": 0.413250397,
+        "total_time": 1.818523437
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:49+00:00"
+    },
+    {
+      "id": "q06",
+      "question": "Does Head & Shoulders actually get rid of dandruff?",
+      "type": "factual",
+      "brand": "Head & Shoulders",
+      "rating_band": null,
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 1.0
+      },
+      "status": "answered",
+      "text": "Yes—several reviewers say Head & Shoulders eliminates dandruff. One reviewer notes it “has helped me in past with serious dandruff issues” [1]; another reports “no had dandruff since using Head and Shoulders” [3]; and others state “not anymore with head and shoulders works like a charm” [4] and “helps with dandruff” [6].",
+      "citation_numbers": [
+        1,
+        3,
+        4,
+        6
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "1f8280b59e714abc",
+          "brand": "Head & Shoulders",
+          "rating": 4,
+          "relevant": true,
+          "review_text": "Head & Shoulders has helped me in past with serious dandruff issues."
+        },
+        {
+          "number": 2,
+          "review_id": "32b696520bafb409",
+          "brand": "Head & Shoulders",
+          "rating": 3,
+          "relevant": true,
+          "review_text": "I'm not sure that this is supposed to get rid of dandruff."
+        },
+        {
+          "number": 3,
+          "review_id": "d6b3c12425719e9f",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Been using it for years, works great.  I have no had dandruff since using Head and Shoulders."
+        },
+        {
+          "number": 4,
+          "review_id": "8e62da4b5842cbab",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "did someone say dandruff?  not anymore with head and shoulders works like a charm!!!!!!!!"
+        },
+        {
+          "number": 5,
+          "review_id": "b28bd1c39f6418bb",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "This is thee only head and shoulders that actually helps with my boyfriends dandruff!!"
+        },
+        {
+          "number": 6,
+          "review_id": "23dbcaa61933690a",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Helps with dandruff"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 115,
+        "prompt_tokens": 506,
+        "total_tokens": 621,
+        "completion_time": 0.241464629,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_time": 0.174934827,
+        "queue_time": 0.613356541,
+        "total_time": 0.416399456
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:50+00:00"
+    },
+    {
+      "id": "q07",
+      "question": "Which brand gets more complaints about residue or buildup left on the hair?",
+      "type": "comparative",
+      "brand": null,
+      "rating_band": "low",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 1.0
+      },
+      "status": "answered",
+      "text": "Pantene receives more complaints about residue or buildup (four reviews: [1][2][3][5]) than Herbal Essences (two reviews: [4][6]).",
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        5,
+        4,
+        6
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "c28beeea8af1ee2b",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "This hairspray is The Worst I’ve ever bought! Residue builds up on my hair & I get large, white clumps of product that builds up & is hard to get out 😗 Do Not buy!!"
+        },
+        {
+          "number": 2,
+          "review_id": "908b89ea660e089b",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "This product left my hair with a weird residue.  I put in on very little and it still felt grimy.  I threw it away after I realized there was no hope for this product."
+        },
+        {
+          "number": 3,
+          "review_id": "b8df2fff31541893",
+          "brand": "Pantene",
+          "rating": 2,
+          "relevant": true,
+          "review_text": "Leaves my hair feeling waxy, like there’s a buildup that I can’t rinse away. Would not buy this again."
+        },
+        {
+          "number": 4,
+          "review_id": "d30ce6ea938ea475",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "Leaves horrible residue in your hair<br />You have to rinse ten times more"
+        },
+        {
+          "number": 5,
+          "review_id": "7db5aadf3b225d87",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "Leaves a lot of build up. Hair is not manageable.  Terrible product."
+        },
+        {
+          "number": 6,
+          "review_id": "46f21533bb1219b7",
+          "brand": "Herbal Essences",
+          "rating": 2,
+          "relevant": true,
+          "review_text": "my hair never really felt clean, left a greasy residue"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 559,
+        "total_tokens": 645,
+        "completion_time": 0.182879621,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_time": 0.028327144,
+        "queue_time": 0.409578832,
+        "total_time": 0.211206765
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:51+00:00"
+    },
+    {
+      "id": "q08",
+      "question": "How do reviewers describe the scent of Pantene compared with Herbal Essences?",
+      "type": "comparative",
+      "brand": null,
+      "rating_band": null,
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 1.0
+      },
+      "status": "answered",
+      "text": "- Pantene’s scent is praised as “amazing” and “great” by reviewers [2][5].  \n- Herbal Essences is described as “smells so good” in one review [1], while another reviewer was disappointed with its scent, saying it didn’t match the regular Herbal Essences fragrance [4].",
+      "citation_numbers": [
+        2,
+        5,
+        1,
+        4
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "ed2cbd26835fa879",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Smells so good! Works great and I'm buying again when I run out! It was either Pantene or Herbal Essence.. this wins hands down! Buy this!"
+        },
+        {
+          "number": 2,
+          "review_id": "78073e2b014d367a",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "I have always liked pantene.  This scent is amazing.  I love it!"
+        },
+        {
+          "number": 3,
+          "review_id": "754af7d79648596d",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Good product. I personally prefer the Pantene cleansing conditioner but this is a really nice change of scents and worked pretty much the same as the Pantene, although I didn't leave any of the Herbal Essences in as a leave in. It felt like it would be too much to use as all 3. Overall, nice product"
+        },
+        {
+          "number": 4,
+          "review_id": "d7c96743435d0837",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I expected it to have the same scent as the Herbal Essences &#34;regular&#34; shampoo. Hugely disappointed. I gave it away."
+        },
+        {
+          "number": 5,
+          "review_id": "fe6452fcd3e8ebb5",
+          "brand": "Pantene",
+          "rating": 4,
+          "relevant": true,
+          "review_text": "First: I really like Pantene hair products a lot. I tend to use mousse or gel in my hair. This gel is clear and a little goes a long way. It didn't leave my hair with that 'wet' look at many gels have, and while it kept my hair in place (on bad hair days) it did also leave it a little stiff feeling,"
+        },
+        {
+          "number": 6,
+          "review_id": "6441e8dc133bc2b9",
+          "brand": "Pantene",
+          "rating": 3,
+          "relevant": true,
+          "review_text": "I really couldn’t smell much of a fragrance.  For me, that was a plus.<br />After a while, this product began to really dry out my scalp.  My hair is also dry and feels more brittle.<br />I use 2 times a week.  Looking for something different.  I had high hopes because it was the Pantene brand."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 160,
+        "prompt_tokens": 767,
+        "total_tokens": 927,
+        "completion_time": 0.339914146,
+        "completion_tokens_details": {
+          "reasoning_tokens": 82
+        },
+        "prompt_time": 0.146932252,
+        "queue_time": 0.212105907,
+        "total_time": 0.486846398
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:12:52+00:00"
+    },
+    {
+      "id": "q09",
+      "question": "Is it worth the price or too expensive for the size?",
+      "type": "filtered",
+      "brand": null,
+      "rating_band": "mid",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "hit": 1,
+        "precision": 0.6666666666666666
+      },
+      "status": "answered",
+      "text": "- Some reviewers think the price is reasonable: it’s “good value” and the size is large enough to last a long time[2][3].  \n- Others find it overpriced for the amount they receive: one says it’s “too high for the size” and another says it’s “not worth the money”[5][6].  \n\nOverall, opinions are split; a few consider it worth the price, while a couple consider it too expensive for the size.",
+      "citation_numbers": [
+        2,
+        3,
+        5,
+        6
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "a86e3ddf7d7eba5d",
+          "brand": "Herbal Essences",
+          "rating": 3,
+          "relevant": false,
+          "review_text": "Is it worth the money? Yes. Is it a good product? No"
+        },
+        {
+          "number": 2,
+          "review_id": "c2d37237812941fe",
+          "brand": "Pantene",
+          "rating": 3,
+          "relevant": true,
+          "review_text": "Its a good product and for the price I could not go wrong size is quite large and will last a long time would consider in the future"
+        },
+        {
+          "number": 3,
+          "review_id": "33736f253969d0c4",
+          "brand": "Pantene",
+          "rating": 3,
+          "relevant": true,
+          "review_text": "At the price I suppose it's a good value, but this stuff is no better than any of the others."
+        },
+        {
+          "number": 4,
+          "review_id": "72e7ac09885a618b",
+          "brand": "Herbal Essences",
+          "rating": 3,
+          "relevant": true,
+          "review_text": "It's ok for price. Smells good, but feel like I used a lot more than I should've..."
+        },
+        {
+          "number": 5,
+          "review_id": "966d2fb61a4bc6f2",
+          "brand": "Herbal Essences",
+          "rating": 3,
+          "relevant": true,
+          "review_text": "Price is too high for the size and am very unsatisfied about this and will NEVER but these again!!"
+        },
+        {
+          "number": 6,
+          "review_id": "eb430366e8120da1",
+          "brand": "Pantene",
+          "rating": 3,
+          "relevant": false,
+          "review_text": "Not worth the money"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 188,
+        "prompt_tokens": 524,
+        "total_tokens": 712,
+        "completion_time": 0.396147468,
+        "completion_tokens_details": {
+          "reasoning_tokens": 81
+        },
+        "prompt_time": 0.030406086,
+        "queue_time": 0.404164033,
+        "total_time": 0.426553554
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:42+00:00"
+    },
+    {
+      "id": "q10",
+      "question": "Does Head & Shoulders cause an itchy, burning, or irritated scalp?",
+      "type": "filtered",
+      "brand": "Head & Shoulders",
+      "rating_band": "low",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 1.0
+      },
+      "status": "answered",
+      "text": "- Several reviewers say the shampoo left their scalp itchy or made it worse [1][2][3][5][6].  \n- One reviewer reported a burning sensation on the scalp [4].  \n\nThus, the reviews indicate that Head & Shoulders can cause an itchy, burning, or otherwise irritated scalp.",
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        4
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "e74f3dcfd5531d96",
+          "brand": "Head & Shoulders",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I've had an itchy scalp for years and I still have it.  This shampoo doesn't work for me at all."
+        },
+        {
+          "number": 2,
+          "review_id": "1f3f48a4a74fab2e",
+          "brand": "Head & Shoulders",
+          "rating": 2,
+          "relevant": true,
+          "review_text": "This did not help my itchy scalp. I thought it would have a cooling feeling and it didnt or I didnt feel it."
+        },
+        {
+          "number": 3,
+          "review_id": "36565ded5e873498",
+          "brand": "Head & Shoulders",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "Didn’t help with itchy scalp"
+        },
+        {
+          "number": 4,
+          "review_id": "8a1341139d6bee08",
+          "brand": "Head & Shoulders",
+          "rating": 2,
+          "relevant": true,
+          "review_text": "It burns my scalp I do not like this stuff. Got it cuz my girls had severe dandruff but head and shoulders are obviously just good for the shampoo"
+        },
+        {
+          "number": 5,
+          "review_id": "46d5df8480f5415a",
+          "brand": "Head & Shoulders",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I was so hopeful this would help my itchy scalp but sad to say it did not."
+        },
+        {
+          "number": 6,
+          "review_id": "c9697603697585bd",
+          "brand": "Head & Shoulders",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I have had good experiences using head and shoulder products in the past, but I’m really disappointed in this one. After using it my scalp became very dry and itchy. The exact opposite that you expect from a head and shoulders product."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 101,
+        "prompt_tokens": 569,
+        "total_tokens": 670,
+        "completion_time": 0.211607716,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_time": 0.032733939,
+        "queue_time": 0.34763872,
+        "total_time": 0.244341655
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:44+00:00"
+    },
+    {
+      "id": "q11",
+      "question": "Do reviewers say the new Pantene formula is worse than the old one?",
+      "type": "filtered",
+      "brand": "Pantene",
+      "rating_band": "low",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        "hit": 1,
+        "precision": 0.5
+      },
+      "status": "answered",
+      "text": "Yes. Several reviewers note that the new Pantene formula performs worse than the previous one: they miss the old formula, describe the new product as “awful,” “greasy,” “frizzy,” “brittle,” and not living up to past results[1][2][3][5].",
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "8bb28b0c865afa11",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I loved the old formula. This new, \"curly hair series\" formula is AWFUL. If Pantene doesn't bring back the old formula I am switching to a new brand.<br />After using Pantene for 10 years now I have to find something else."
+        },
+        {
+          "number": 2,
+          "review_id": "eddd1f18b2d3a0f3",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "They definitely changed their formula.  I used the Beautiful Lengths line from Pantene Pro V about 2 years back with great results.  Now the shampoo especially made the roots of my hair super greasy/waxy feeling.  You can feel this immediately after rinsing in the shower - feels like product build u"
+        },
+        {
+          "number": 3,
+          "review_id": "72b55ddd2f9d2e3e",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "This is NOT the formula that Pantene has been using for the past 20 plus years. Does not work at all, I minus well not even put it in my hair. It made my hair look super frizzy and feeling extremely brittle. Plus smells horrible. They won’t take back the product or refund me my money."
+        },
+        {
+          "number": 4,
+          "review_id": "778f185a58d09f4b",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "OMG!!! Iam so happy to find this here!! Not happy for anyone that has to suffer through this as I have went for three months in agonizing,itching pain and could not for the life of me figure out what was causing it. I finally after two months, went to the Dr. incurring an 80 dollar bill! only to hav"
+        },
+        {
+          "number": 5,
+          "review_id": "88e0a0d0141935bf",
+          "brand": "Pantene",
+          "rating": 2,
+          "relevant": false,
+          "review_text": "In the past I have used several Pantene products and was always satisfied with the results. That may be why I was so surprised at the difference in ths product.<br />I had to use much more just get a lather. It never made my hair look or behave as Pantene products usually do. Also, it never had that"
+        },
+        {
+          "number": 6,
+          "review_id": "c674cccad391752a",
+          "brand": "Pantene",
+          "rating": 2,
+          "relevant": false,
+          "review_text": "Not as good as other pantene products."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 111,
+        "prompt_tokens": 837,
+        "total_tokens": 948,
+        "completion_time": 0.234911854,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_time": 0.072721206,
+        "queue_time": 0.35009768,
+        "total_time": 0.30763306
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:45+00:00"
+    },
+    {
+      "id": "q12",
+      "question": "What do reviewers say about sulfates in these shampoos?",
+      "type": "factual",
+      "brand": null,
+      "rating_band": null,
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 1.0
+      },
+      "status": "answered",
+      "text": "- Several reviewers criticize sulfates, saying they dry out hair and strip natural oils[1][2][6].  \n- One reviewer notes that the product claimed to be sulfate‑free actually contains sodium laureth sulfate[2].  \n- A negative comment advises not to buy “non‑sulfate” shampoo, implying concern about sulfates[3].  \n- Positive reviewers appreciate that their shampoo is “non‑sulfate” and that it does not leave their hair dry[4], and they mention being “worried about sulfate” and liking the product for that reason[5].",
+      "citation_numbers": [
+        1,
+        2,
+        6,
+        3,
+        4,
+        5
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "8cd63b527c49bd23",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "This shampoo has sulfates in it............they are horrible for your hair...........sulfates give the shampoo the foaming property and dry your hair out over time..........look for a shampoo with NO SULFATES........I wonder why shampoo companies continue to use this ingredient KNOWING it is NOT goo"
+        },
+        {
+          "number": 2,
+          "review_id": "65770dc8db225fee",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "They said that there was no sulfate in this shampoo, the second ingredient is sodium<br />laureth sulfate! This is not listed on the ingredients on the page! Worthless to me! I can’t use it!!!"
+        },
+        {
+          "number": 3,
+          "review_id": "75c1b3ce64c09374",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "Don't buy non Sulfate shampoo"
+        },
+        {
+          "number": 4,
+          "review_id": "dc7ff59dc17a56c1",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Love this shampoo.  Doesn't leave my hair dry because of non sulfate."
+        },
+        {
+          "number": 5,
+          "review_id": "2dc2fe226b8fb81f",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": true,
+          "review_text": "Love the scent of the shampoo and conditioner. It’s great if you’re worried about sulfate."
+        },
+        {
+          "number": 6,
+          "review_id": "d1b525e4802f094d",
+          "brand": "Pantene",
+          "rating": 2,
+          "relevant": true,
+          "review_text": "I'm not sure this product was right for my hair. It dried it out pretty badly, which caused breakage. I don't normally use shampoos that have sulfate in them because it's strips your hair of the good and natural oils, but I tested this item for free from.Influenister. This is just my opinion and exp"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 160,
+        "prompt_tokens": 637,
+        "total_tokens": 797,
+        "completion_time": 0.34373219,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_time": 0.036519767,
+        "queue_time": 0.31523746,
+        "total_time": 0.380251957
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:46+00:00"
+    },
+    {
+      "id": "q13",
+      "question": "What are the most common complaints in low-rated reviews?",
+      "type": "broad",
+      "brand": null,
+      "rating_band": "low",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          true,
+          false,
+          true,
+          false,
+          true,
+          true
+        ],
+        "hit": 1,
+        "precision": 0.6666666666666666
+      },
+      "status": "answered",
+      "text": "- Greasiness or a “wet/dirty” feeling after use[1][4]  \n- Lack of effectiveness / “does nothing”[2]  \n- Drying, brittleness or damage to hair (dry, fried, brittle, harsh ends)[3][5][6]  \n- Unpleasant or overpowering scent (causing headache)[6]",
+      "citation_numbers": [
+        1,
+        4,
+        2,
+        3,
+        5,
+        6
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "ee4ab4af6c167ef1",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I don't write many reviews but I felt like I had to write a review on this one. Don't waste your money or time on this product. It made my hair so greasy I had to run to the store and buy another product to rewash my hair to get it off. I just had to write my personal experience."
+        },
+        {
+          "number": 2,
+          "review_id": "e58e4c69bcf14772",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "I never write reviews, but this stuff just does NOTHING! I've used other brands and loved how it allowed me to sneak an extra day between washes. This stuff is terrible, waste of money. If someone reviewed this as positive they've never used any other quality brand."
+        },
+        {
+          "number": 3,
+          "review_id": "09454d53bf0a9cf1",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I never write a review, but I have to say, This product was TERRIBLE! I’ve been using the CGM for over a year, with different products, I thought I’d give this a try. It smelled amazing, but when it came time to brush my hair in the shower it was so dried out, like almost fried, and matted. I attach"
+        },
+        {
+          "number": 4,
+          "review_id": "ab206d3a29d68f25",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": false,
+          "review_text": "I am surprised that this product has any positive reviews. Made my hair feel wet and dirty, do not recommend!"
+        },
+        {
+          "number": 5,
+          "review_id": "ad1c5da9bfa5a56f",
+          "brand": "Head & Shoulders",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I never give a bad review but this product did not work at least for my hair, it made my hair very harsh at the ends of my  and very brittle was not soft at all and the oil was not controlled. I personally won’t be buy it again however the scent was decent but it did not work for my hair."
+        },
+        {
+          "number": 6,
+          "review_id": "d3acb79a02cae09d",
+          "brand": "Herbal Essences",
+          "rating": 1,
+          "relevant": true,
+          "review_text": "I am not one to review products but this was horrible I feel buyers should beware. The scent is over powering. It gave me a head ache. It dried my hair out. I tried it twice and then tossed it out."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 115,
+        "prompt_tokens": 768,
+        "total_tokens": 883,
+        "completion_time": 0.243574109,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_time": 0.042447197,
+        "queue_time": 0.309660952,
+        "total_time": 0.286021306
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:47+00:00"
+    },
+    {
+      "id": "q14",
+      "question": "What do people like most about Pantene?",
+      "type": "broad",
+      "brand": "Pantene",
+      "rating_band": "high",
+      "answerable": true,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hit": 0,
+        "precision": 0.0
+      },
+      "status": "answered",
+      "text": "People repeatedly say they **love** or **like** Pantene products and use them regularly[1][2][3][4][5][6].",
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "1c846f7b44f59a67",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "I love Pantene.  I always use it."
+        },
+        {
+          "number": 2,
+          "review_id": "19791c0da1cc94ac",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "i love pantene"
+        },
+        {
+          "number": 3,
+          "review_id": "2b38ea49234f8890",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "I love Pantene. Long time customer here."
+        },
+        {
+          "number": 4,
+          "review_id": "e7c4cb8adc05efca",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "I like Pantene products"
+        },
+        {
+          "number": 5,
+          "review_id": "19a9b99b0fa4c4d0",
+          "brand": "Pantene",
+          "rating": 4,
+          "relevant": false,
+          "review_text": "I always like Pantene products"
+        },
+        {
+          "number": 6,
+          "review_id": "62d8e3e4b6e13930",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": false,
+          "review_text": "I love Pantene it’s all I use."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 87,
+        "prompt_tokens": 448,
+        "total_tokens": 535,
+        "completion_time": 0.202777682,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_time": 1.739066515,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "queue_time": 0.34896234,
+        "total_time": 1.941844197
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:53+00:00"
+    },
+    {
+      "id": "u01",
+      "question": "How much does Pantene shampoo cost in Japan?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "status": "refused",
+      "text": "The reviews do not cover this.",
+      "citation_numbers": [],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "21ae023948870787",
+          "brand": "Pantene",
+          "rating": 3,
+          "relevant": null,
+          "review_text": "I love Pantene products, but this one is overpriced. You can go to Costco and get Pantene shampoo for $2 - $4 less depending on whether there is a coupon available."
+        },
+        {
+          "number": 2,
+          "review_id": "c292062548c9c73f",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "3 Pantene Shampoo for a great price! I would buy again."
+        },
+        {
+          "number": 3,
+          "review_id": "a7ae27a2ce3f0601",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "Amazon has the best deals for 2-in-1 Pantene shampoo."
+        },
+        {
+          "number": 4,
+          "review_id": "6c329f928e3e18d9",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "Classic Pantene shampoo, good value ($/oz). Prefer the 1L (33.8oz) but that is becoming hard to find."
+        },
+        {
+          "number": 5,
+          "review_id": "a284f2395c0d622d",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "Impossible to find this type Pantene in stores. Was very glad to find the conditioner and shampoo in large quantity bottles at reasonable price."
+        },
+        {
+          "number": 6,
+          "review_id": "f7215324e1672505",
+          "brand": "Pantene",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "I love Pantene products. It was a great price to get. I kept 2 for myself and gave 2 away. Don't need to buy shampoo in a while."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 561,
+        "total_tokens": 590,
+        "completion_time": 0.060460734,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_time": 0.02835318,
+        "queue_time": 0.333826177,
+        "total_time": 0.088813914
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:54+00:00"
+    },
+    {
+      "id": "u02",
+      "question": "Have clinical studies proven the ingredients in Head & Shoulders safe for long-term use?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "status": "refused",
+      "text": "The reviews do not cover this.",
+      "citation_numbers": [],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "2c023828ac311946",
+          "brand": "Head & Shoulders",
+          "rating": 2,
+          "relevant": null,
+          "review_text": "I just started to use this product, when my bottle of the traditional Head and Shoulders ran out and the new product formula irritated my skin.  I cannot use it, and would not recommend it.  I'm aggravated that I can no longer return it to Amazon, and I should have tried it immediately to see if the"
+        },
+        {
+          "number": 2,
+          "review_id": "c9697603697585bd",
+          "brand": "Head & Shoulders",
+          "rating": 1,
+          "relevant": null,
+          "review_text": "I have had good experiences using head and shoulder products in the past, but I’m really disappointed in this one. After using it my scalp became very dry and itchy. The exact opposite that you expect from a head and shoulders product."
+        },
+        {
+          "number": 3,
+          "review_id": "6f6028e8d21250b2",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "I've been using Head & Shoulders for most of my adult life...so long, in fact, that I'm not sure if I ever really needed it, or need it now. that said...I am not plagued by an itchy scalp and/or flakes, so, why mess with success? The formula still works, the coconut scent is very pleasant, and the b"
+        },
+        {
+          "number": 4,
+          "review_id": "5bfe9f472a49e19d",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "Don't be afraid of using this because you remember the head and shoulders from 10+ years ago. This stuff works great, smells great and is a great value."
+        },
+        {
+          "number": 5,
+          "review_id": "15bf8dce175af957",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "I have been using Head and Shoulders Shampoo for years. It has always been a good product and remains so tp this day."
+        },
+        {
+          "number": 6,
+          "review_id": "21155422d40b65e2",
+          "brand": "Head & Shoulders",
+          "rating": 2,
+          "relevant": null,
+          "review_text": "Not sure what else to say but I've been using it for about a month now, put it on 2-3 times a day and my head is still flaky.  Normally, I like head and shoulder products as they've worked quickly and effectively in the past.  Not sure what else to say but it just isn't working for me."
+        }
+      ],
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 765,
+        "total_tokens": 800,
+        "completion_time": 0.07499101,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_time": 0.02761359,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "queue_time": 0.349510349,
+        "total_time": 0.1026046
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:54+00:00"
+    },
+    {
+      "id": "u03",
+      "question": "What do reviewers say about the scent of Redken All Soft shampoo?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "status": "refused",
+      "text": "The reviews do not cover this.",
+      "citation_numbers": [],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "ccda9c592ba7caae",
+          "brand": "Herbal Essences",
+          "rating": 4,
+          "relevant": null,
+          "review_text": "I really like the scent of this shampoo. Its refreshing and not overwhelming. I am quite sensitive to scents but this one does not bother me at all. It leaves my color yreated hair moisturized and soft even after my hair dries. Definetly recommend it"
+        },
+        {
+          "number": 2,
+          "review_id": "669e22981fa6c9ec",
+          "brand": "Head & Shoulders",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "I love this shampoo leaves my hair manageable soft and the scent doesn’t bother I have chemical induce asthma so I have to careful with the perfumes they add to any shampoo"
+        },
+        {
+          "number": 3,
+          "review_id": "fd75983dfdbf8360",
+          "brand": "Pantene",
+          "rating": 2,
+          "relevant": null,
+          "review_text": "I could not tolerate the scent of this shampoo. I tried it one time and had to redo my hair because the smell was so awful. Way too sweet.... And it reminded me of air freshener."
+        },
+        {
+          "number": 4,
+          "review_id": "cbc104399e33c1d8",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "When I started using this shampoo and conditioner, I smelled it and it is amazing. That softens my hair."
+        },
+        {
+          "number": 5,
+          "review_id": "f9945ebef8330f2a",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "I am trying to switch to healthier products without a lot of chemicals, so I tried out this shampoo and conditioner for the first time today. The shampoo lathered fine, and the conditioner detangled my hair good and left my hair soft.  The color of my hair seems a tad bit lighter too like it brought"
+        },
+        {
+          "number": 6,
+          "review_id": "86f1a55838c8e456",
+          "brand": "Pantene",
+          "rating": 1,
+          "relevant": null,
+          "review_text": "The scent is the only good thing about this shampoo/conditioner. The shampoo doesn't clean well and leaves behind a really greasy residue. The conditioner damaged my hair and made it stiff as straw. I had to get a clarifying shampoo from Tresemme to get all the residue off and back to my normal soft"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 38,
+        "prompt_tokens": 730,
+        "total_tokens": 768,
+        "completion_time": 0.08035239,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_time": 0.034099997,
+        "queue_time": 0.3423228,
+        "total_time": 0.114452387
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:13:55+00:00"
+    },
+    {
+      "id": "u04",
+      "question": "How did reviewers react to the Herbal Essences products launched in 2025?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "retrieval": {
+        "n_hits": 6,
+        "relevant": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "status": "refused",
+      "text": "The reviews do not cover this.",
+      "citation_numbers": [],
+      "invalid_citations": [],
+      "uncited": false,
+      "citation_valid": true,
+      "sources": [
+        {
+          "number": 1,
+          "review_id": "638f050d0ccdad4f",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "This was a nice product for the money.  A little indulgence can do wonders.  I wish they would make the original Herbal Essence.  I can't understand why they do not.  We should start a petition."
+        },
+        {
+          "number": 2,
+          "review_id": "f2cd83f99e9b30e3",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "Recieved these three products to test and review, I've purchased Herbal Essence  in the past and was very disappointed. However, this product has changed my vowes on the brand. I have very long color damaged hair, it's dry and brittle aND it's a fight just to comb it. After using these products howe"
+        },
+        {
+          "number": 3,
+          "review_id": "7658e23dd5c9b676",
+          "brand": "Herbal Essences",
+          "rating": 3,
+          "relevant": null,
+          "review_text": "I'm never really disappointed by herbal essences. It smelled great and my hair was soft and not weighed down. I only rated it three stars because I prefer the herbal essencestotally twisted conditioner for my curly hair."
+        },
+        {
+          "number": 4,
+          "review_id": "77bdae3c1508cebe",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "I had used this for Year’s and apparently Herbal Essences Stopped making it !?? I wish I knew Why ? And it was well under $15...<br />I’ve never found anything comparable not even there new product ...<br />Very Disappointed but won’t pay this Huge price Again, even if I can find it :("
+        },
+        {
+          "number": 5,
+          "review_id": "6bfb27d32e08d8f4",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "I have used Herbal Essence for years. These products do not disappoint!"
+        },
+        {
+          "number": 6,
+          "review_id": "6e249606e1109378",
+          "brand": "Herbal Essences",
+          "rating": 5,
+          "relevant": null,
+          "review_text": "When this arrived I opened my bathroom cabinet and realized how many Herbal Essence products I have.  I have been a devout supporter and have not even realized.<br /><br />This product arrived and it's no different from the others. It smells great, it moisturizes, it lathers up well and it's a good "
+        }
+      ],
+      "usage": {
+        "completion_tokens": 38,
+        "prompt_tokens": 806,
+        "total_tokens": 844,
+        "completion_time": 0.079452679,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_time": 0.039152856,
+        "queue_time": 0.820677756,
+        "total_time": 0.118605535
+      },
+      "attempts": 1,
+      "timestamp": "2026-09-16T16:14:44+00:00"
+    }
+  ]
+}

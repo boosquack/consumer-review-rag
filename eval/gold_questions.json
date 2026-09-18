@@ -1,0 +1,186 @@
+{
+  "frozen_at": "2026-09-16T16:12:00Z",
+  "description": "Story 6 gold set (CAP-5). Written and frozen before the first scored run; do not edit after seeing answers. A retrieved review is relevant when its original review_text matches relevant_pattern (case-insensitive regex). Pattern counts were checked against the clean parquet within each question's filters, not against retrieval output.",
+  "questions": [
+    {
+      "id": "q01",
+      "question": "what do 1-star Pantene reviewers complain about",
+      "type": "filtered",
+      "brand": "Pantene",
+      "rating_band": "low",
+      "answerable": true,
+      "relevant_pattern": "\\b(dry|dries|dried|brittle|greasy|oily|residue|itch\\w*|frizz\\w*|tangl\\w*|static\\w*|limp|dull|flak\\w*|irritat\\w*|smell\\w*|scent|build ?up|breakage|split ends|fall(ing)? out|hair loss|weigh\\w* (it |my hair )?down)\\b",
+      "notes": "Headline demo question (story 4 query 1, judged partly). Relevant = names a concrete product complaint (hair feel, scalp, scent, hair loss), not just anger at the brand. The low band includes 2 stars; the filter cannot select exactly 1 star."
+    },
+    {
+      "id": "q02",
+      "question": "Herbal Essences smell is too strong or gives headaches",
+      "type": "factual",
+      "brand": "Herbal Essences",
+      "rating_band": null,
+      "answerable": true,
+      "relevant_pattern": "headache|overpower\\w*|too strong|overwhelming|migraine",
+      "notes": "Story 4 query 3, the known miss: the brand name in the query crowds retrieval toward generic brand+smell reviews. Kept verbatim to measure brand-name crowding."
+    },
+    {
+      "id": "q03",
+      "question": "Does the shampoo make hair fall out or cause hair loss?",
+      "type": "filtered",
+      "brand": null,
+      "rating_band": "low",
+      "answerable": true,
+      "relevant_pattern": "hair loss|los(e|ing|t) (my |so much |a lot of )?hair|fall(ing|s)? out|thinn\\w*|bald\\w*|shedding",
+      "notes": "Story 4 query 4 (relevant). Unfiltered by brand, so answers may lean to one brand; not a brand comparison."
+    },
+    {
+      "id": "q04",
+      "question": "Did the package arrive leaking or with a broken bottle?",
+      "type": "factual",
+      "brand": null,
+      "rating_band": null,
+      "answerable": true,
+      "relevant_pattern": "leak\\w*|broken|crack\\w*|busted|spill\\w*",
+      "notes": "Story 4 query 7 (relevant). Shipping damage, not product quality."
+    },
+    {
+      "id": "q05",
+      "question": "Is Pantene safe for color-treated hair?",
+      "type": "filtered",
+      "brand": "Pantene",
+      "rating_band": "high",
+      "answerable": true,
+      "relevant_pattern": "colou?r[- ]?(treated|safe|protect\\w*)|colou?red hair|dyed|hair colou?r|colou?r (last|stay|fad)\\w*",
+      "notes": "Story 4 query 8 (relevant). High band makes the evidence one-sided by design; an answer must not claim it is safe for everyone."
+    },
+    {
+      "id": "q06",
+      "question": "Does Head & Shoulders actually get rid of dandruff?",
+      "type": "factual",
+      "brand": "Head & Shoulders",
+      "rating_band": null,
+      "answerable": true,
+      "relevant_pattern": "dandruff|flak\\w*",
+      "notes": "Story 4 query 2 (relevant). Pattern is loose (most H&S reviews mention dandruff), so precision here is an upper bound."
+    },
+    {
+      "id": "q07",
+      "question": "Which brand gets more complaints about residue or buildup left on the hair?",
+      "type": "comparative",
+      "brand": null,
+      "rating_band": "low",
+      "answerable": true,
+      "relevant_pattern": "residue|build ?up|waxy|coat(s|ed|ing)|film",
+      "notes": "Comparative. Six retrieved reviews cannot establish which brand has more complaints; a faithful answer reports what the retrieved reviews say per brand and does not rank brands by frequency."
+    },
+    {
+      "id": "q08",
+      "question": "How do reviewers describe the scent of Pantene compared with Herbal Essences?",
+      "type": "comparative",
+      "brand": null,
+      "rating_band": null,
+      "answerable": true,
+      "relevant_pattern": "scent|smell\\w*|fragrance",
+      "notes": "Comparative across two brands with no brand filter; retrieval may return only one of the two brands. Pattern is loose."
+    },
+    {
+      "id": "q09",
+      "question": "Is it worth the price or too expensive for the size?",
+      "type": "filtered",
+      "brand": null,
+      "rating_band": "mid",
+      "answerable": true,
+      "relevant_pattern": "expensive|overpriced|pric\\w*|cost\\w*|small (bottle|size)|tiny|value",
+      "notes": "Close to story 4 query 6 (relevant). Mid band (3 stars)."
+    },
+    {
+      "id": "q10",
+      "question": "Does Head & Shoulders cause an itchy, burning, or irritated scalp?",
+      "type": "filtered",
+      "brand": "Head & Shoulders",
+      "rating_band": "low",
+      "answerable": true,
+      "relevant_pattern": "itch\\w*|irritat\\w*|burn\\w*|rash|redness|sore\\w*",
+      "notes": "Brand and band filtered; smallest filter pool in the set (1,163 reviews)."
+    },
+    {
+      "id": "q11",
+      "question": "Do reviewers say the new Pantene formula is worse than the old one?",
+      "type": "filtered",
+      "brand": "Pantene",
+      "rating_band": "low",
+      "answerable": true,
+      "relevant_pattern": "new formula|formula change|chang\\w* (the|their|its) formula|reformulat\\w*|old formula|original formula",
+      "notes": "Narrow theme (126 matching reviews in the filter). Reviews carry no dates in the prompt, so an answer cannot say when the change happened."
+    },
+    {
+      "id": "q12",
+      "question": "What do reviewers say about sulfates in these shampoos?",
+      "type": "factual",
+      "brand": null,
+      "rating_band": null,
+      "answerable": true,
+      "relevant_pattern": "sulfate|sulphate",
+      "notes": "Ingredient mention as reported by reviewers; the answer must not add outside knowledge about sulfates."
+    },
+    {
+      "id": "q13",
+      "question": "What are the most common complaints in low-rated reviews?",
+      "type": "broad",
+      "brand": null,
+      "rating_band": "low",
+      "answerable": true,
+      "relevant_pattern": "\\b(dry|dries|dried|brittle|greasy|oily|residue|itch\\w*|frizz\\w*|tangl\\w*|static\\w*|limp|dull|flak\\w*|irritat\\w*|smell\\w*|scent|build ?up|breakage|leak\\w*|broken|fall(ing)? out|hair loss|expensive|overpriced|fake|counterfeit|wrong (item|product))\\b",
+      "notes": "Broad theme question. Top-6 retrieval cannot establish 'most common'; expected weakness: thin answer or over-generalizing from few reviews."
+    },
+    {
+      "id": "q14",
+      "question": "What do people like most about Pantene?",
+      "type": "broad",
+      "brand": "Pantene",
+      "rating_band": "high",
+      "answerable": true,
+      "relevant_pattern": "\\b(soft\\w*|smooth\\w*|shin\\w*|silky|manageab\\w*|healthy|volume|moistur\\w*|scent|smell\\w*|detangl\\w*|strong\\w*)\\b",
+      "notes": "Broad theme question. Expected weakness: short generic praise ranks high (story 4 query 5)."
+    },
+    {
+      "id": "u01",
+      "question": "How much does Pantene shampoo cost in Japan?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "relevant_pattern": null,
+      "notes": "Outside the corpus: regional prices. 'japan|tokyo' appears in 5 of 53,872 reviews and none states a Japanese price (checked by mention count only)."
+    },
+    {
+      "id": "u02",
+      "question": "Have clinical studies proven the ingredients in Head & Shoulders safe for long-term use?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "relevant_pattern": null,
+      "notes": "Ingredient safety claim needing clinical evidence; consumer reviews cannot establish it. 'clinical stud|trial' appears in 1 review."
+    },
+    {
+      "id": "u03",
+      "question": "What do reviewers say about the scent of Redken All Soft shampoo?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "relevant_pattern": null,
+      "notes": "Competitor product outside the brand set. 'redken' appears in 34 reviews (comparisons), so retrieval may surface them; a correct reply still declines to describe a Redken product's scent."
+    },
+    {
+      "id": "u04",
+      "question": "How did reviewers react to the Herbal Essences products launched in 2025?",
+      "type": "unanswerable",
+      "brand": null,
+      "rating_band": null,
+      "answerable": false,
+      "relevant_pattern": null,
+      "notes": "After the corpus snapshot (ends 2023-09-01). Reviews in the prompt carry no dates, so the model cannot tell old reviews from 2025 ones; answering from any reviews is a failure."
+    }
+  ]
+}

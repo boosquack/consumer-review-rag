@@ -143,3 +143,25 @@ GROQ_TIMEOUT_S = 30
 # The fixed sentence the model must reply with when the reviews do not cover the
 # question; generation detects refusals by this sentence.
 REFUSAL_TEXT = "The reviews do not cover this."
+
+# --- Evaluation (story 6) ---------------------------------------------------------
+EVAL_DIR = PROJECT_ROOT / "eval"
+EVAL_GOLD_JSON = EVAL_DIR / "gold_questions.json"
+EVAL_ANSWERS_JSON = EVAL_DIR / "answers.json"
+# A gold pattern must match at least this many reviews within the question's
+# filters, so a hit is not luck against a handful of matching reviews.
+EVAL_MIN_PATTERN_MATCHES = 10
+EVAL_QUESTION_TYPES = ("factual", "comparative", "filtered", "broad", "unanswerable")
+# Characters of review_text saved per source in answers.json.
+EVAL_SNIPPET_CHARS = 300
+# Groq free tier caps gpt-oss-120b at 8K tokens/min (reasoning tokens included).
+# The runner budgets below that over a sliding 60 s window, using measured usage.
+EVAL_TOKENS_PER_MIN = 7000
+EVAL_WINDOW_S = 60.0
+# Token cost assumed for a call before any usage has been measured.
+EVAL_TOKEN_ESTIMATE = 3000
+# Wait before the single retry of a question that came back rate_limited.
+EVAL_RATE_LIMIT_WAIT_S = 60.0
+# Agent-graded faithfulness of the saved answers (pass/fail with a note per id),
+# tied to the answers.json run it grades.
+EVAL_FAITHFULNESS_JSON = EVAL_DIR / "faithfulness.json"
