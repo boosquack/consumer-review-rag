@@ -1,4 +1,4 @@
-"""Streamlit demo: cited RAG answers plus EDA highlights over P&G haircare reviews (CAP-6).
+"""Streamlit demo: cited RAG answers plus EDA highlights over haircare reviews (CAP-6).
 
 Run with: uv run streamlit run app/streamlit_app.py
 
@@ -154,7 +154,7 @@ def _render_eda() -> None:
 
 def main() -> None:
     st.set_page_config(page_title="Consumer Review Intelligence", page_icon="\U0001f9f4", layout="wide")
-    st.title("Consumer Review Intelligence for P&G Haircare Brands")
+    st.title("Consumer Review Intelligence for Haircare Brands")
     st.caption(
         "Cited, grounded answers over public Amazon reviews of Head & Shoulders, Pantene, "
         "and Herbal Essences. Answers use only the retrieved reviews and cite them by number; "

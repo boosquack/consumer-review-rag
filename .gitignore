@@ -33,3 +33,9 @@ _bmad/**/*.user.toml
 
 # BMAD skill render cache (machine-local, regenerated)
 _bmad/render/
+
+# Local application notes (not part of the project)
+docs/application-paragraph.md
+
+# Blind grading sheet (local working file)
+eval/grading/

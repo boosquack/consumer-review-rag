@@ -565,5 +565,15 @@ class GitStateTest(unittest.TestCase):
             self.assertEqual(evaluate.git_state(), {"git_commit": None, "git_dirty": None})
 
 
+
+class CompareGradesTests(unittest.TestCase):
+    def test_lists_only_pass_fail_differences_for_ids_both_graded(self):
+        agent = {"q01": {"pass": True}, "q02": {"pass": False}, "q03": {"pass": True}}
+        human = {"q01": {"pass": True}, "q02": {"pass": True}, "q04": {"pass": False}}
+        self.assertEqual(
+            evaluate.compare_grades(agent, human),
+            [{"id": "q02", "agent": False, "human": True}],
+        )
+
 if __name__ == "__main__":
     unittest.main()

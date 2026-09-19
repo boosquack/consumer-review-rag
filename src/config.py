@@ -165,3 +165,8 @@ EVAL_RATE_LIMIT_WAIT_S = 60.0
 # Agent-graded faithfulness of the saved answers (pass/fail with a note per id),
 # tied to the answers.json run it grades.
 EVAL_FAITHFULNESS_JSON = EVAL_DIR / "faithfulness.json"
+# Human faithfulness grades in the same schema as EVAL_FAITHFULNESS_JSON, written by
+# the maintainer and kept beside the agent's grades for comparison.
+EVAL_FAITHFULNESS_HUMAN_JSON = EVAL_DIR / "faithfulness_human.json"
+# Blind grading sheet (no agent grades shown); local working file, git-ignored.
+EVAL_GRADING_SHEET = EVAL_DIR / "grading" / "grading_sheet.md"

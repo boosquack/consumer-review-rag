@@ -1,4 +1,4 @@
-"""Stream Amazon Reviews 2023 and filter it to the locked P&G haircare brands.
+"""Stream Amazon Reviews 2023 and filter it to the locked haircare brands.
 
 Run with: uv run python data/download_data.py [--limit N] [--refresh]
 

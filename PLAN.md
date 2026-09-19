@@ -1,21 +1,20 @@
 # PLAN.md
 
-**Project:** Consumer Review Intelligence for P&G Personal-Care Brands
+**Project:** Consumer Review Intelligence for Haircare Brands
 **Repo:** `consumer-review-rag`
 **Author:** Kent Joshua P. Alvarez (Booswaa)
-**Built for:** P&G IT Internship application, AI Engineering track
 **Timeframe:** One week (Week of Sep 15, 2026)
 
 ---
 
 ## 1. Context and Purpose
 
-This is a portfolio project built specifically for a P&G AI Engineering Intern application. It is deliberately grounded in P&G's own brands rather than a generic dataset, so that a reviewer reads it as "built for us" instead of "repurposed from a thesis."
+This is a portfolio project grounded in real, widely known consumer brands rather than a generic dataset, so a reviewer sees a concrete business context instead of a repurposed thesis.
 
 It does two things on top of one shared corpus of consumer product reviews:
 
-1. **Exploratory Data Analysis (the Data Analyst layer).** Understand the review data: rating distributions, review volume over time, sentiment trends, and the recurring themes that drive positive and negative reviews for each brand. This maps to P&G's Consumer & Market Knowledge function and to the internship's general qualification about deriving business insight from data.
-2. **Retrieval-Augmented Generation (the AI Engineering layer).** A grounded question-answering and summarization system over the same reviews. Every answer traces back to specific source reviews with citations, never a fluent-sounding guess. This maps directly to the JD line about developing "AI agents / AI-powered digital business solutions."
+1. **Exploratory Data Analysis (the Data Analyst layer).** Understand the review data: rating distributions, review volume over time, sentiment trends, and the recurring themes that drive positive and negative reviews for each brand. This is the consumer-insight side of the work: deriving business insight from data.
+2. **Retrieval-Augmented Generation (the AI Engineering layer).** A grounded question-answering and summarization system over the same reviews. Every answer traces back to specific source reviews with citations, never a fluent-sounding guess. This is the AI-engineering side of the work.
 
 The intended narrative for the application: *a system that turns raw consumer review data into both analyst-ready insight and a grounded, cited answering tool a brand team could actually query.*
 
@@ -30,12 +29,12 @@ The intended narrative for the application: *a system that turns raw consumer re
 
 The project is "done" when all of the following are true:
 
-- [ ] A cleaned, documented review dataset covering 2 to 3 P&G haircare brands is committed (or a reproducible download + clean script is committed if the raw file is too large for the repo).
+- [ ] A cleaned, documented review dataset covering 2 to 3 haircare brands is committed (or a reproducible download + clean script is committed if the raw file is too large for the repo).
 - [ ] An EDA notebook runs top to bottom with no errors and produces at least the visualizations listed in Section 7, Phase 2, each with a one to two sentence written insight.
 - [ ] A RAG pipeline answers natural-language questions over the reviews and returns citations (brand, rating, and a source snippet) for every answer.
 - [ ] A hand-built evaluation set of 15 to 20 questions exists, with retrieval and faithfulness scored and the results written up honestly.
 - [x] A Streamlit app is deployed live on Streamlit Community Cloud with a working public URL (https://consumer-review-rag.streamlit.app/).
-- [ ] A README ties the whole thing to the P&G application, with an architecture diagram and clear run instructions.
+- [ ] A README explains the problem and approach, with an architecture diagram and clear run instructions.
 - [ ] A LIMITATIONS section names where retrieval fails, where the model hallucinates, and what the system cannot answer.
 
 ### Non-goals for this week (candidate stretch work, Section 12)
@@ -49,7 +48,7 @@ The project is "done" when all of the following are true:
 
 | Decision | Recommendation | Why |
 |---|---|---|
-| Brand set | **Locked (2026-09-15):** Head & Shoulders, Pantene, Herbal Essences (haircare) | Same category means clean like-for-like comparison. All three are P&G. Measured coverage clears the volume bar (Section 13). |
+| Brand set | **Locked (2026-09-15):** Head & Shoulders, Pantene, Herbal Essences (haircare) | Same category means clean like-for-like comparison. All three sit under one parent company. Measured coverage clears the volume bar (Section 13). |
 | Category fallback | Grooming (Gillette, Oral-B) or skincare (Olay) | Not needed: haircare coverage is strong. Aussie is a viable fourth haircare brand but exceeds the 2–3 brand scope. |
 | Data source | **Locked (2026-09-15):** Amazon Reviews 2023 (`McAuley-Lab/Amazon-Reviews-2023` on Hugging Face), category `Beauty_and_Personal_Care`, filtered to the brand set | Public, no scraping. The `All_Beauty` subset is too thin for per-brand trends. See Section 13 for evidence and the dataset-terms caveat. |
 | Generation model | **Locked (2026-09-15):** Groq `openai/gpt-oss-120b`, low temperature (set once in `src/config.py`) | Groq shut down its Llama chat models on 2026-08-16 ([deprecations](https://console.groq.com/docs/deprecations)), so the original "current Llama instruct model" plan no longer exists. Groq names it as the replacement for `llama-3.3-70b-versatile`; the expectation of strong grounding is the selection rationale, to be measured in evaluation (Phase 5), not a measured result. Trade-off: it emits reasoning tokens (121 on a trivial call during selection) that count against the free-tier 8K tokens/min cap ([rate limits](https://console.groq.com/docs/rate-limits)). Free tier. |
@@ -111,7 +110,7 @@ data/raw/           # if the raw dataset is large; keep a download script instea
 ## 5. Data Plan
 
 ### 5.1 Sourcing (Day 1, first thing)
-1. Search Kaggle for existing personal-care / haircare / Amazon product review datasets. The Amazon Reviews family (Beauty / Personal Care subsets) is the most likely source of P&G-brand rows.
+1. Search Kaggle for existing personal-care / haircare / Amazon product review datasets. The Amazon Reviews family (Beauty / Personal Care subsets) is the most likely source of rows for these brands.
 2. Filter to rows whose product title or brand field matches the chosen brands (case-insensitive substring match on brand names and common product-line names).
 3. If no single dataset has all three brands with enough volume, either drop to two brands or combine two compatible datasets with a shared schema.
 4. Only if public datasets genuinely fail: fall back to a small, respectful scrape, and time-box it to half a day maximum. Do not let scraping become the project.
@@ -232,7 +231,7 @@ The step that separates a real project from a demo. Protect this phase even if t
 ### Phase 6 (Day 6): Deployment, documentation, buffer
 - `streamlit_app.py`: a query box, optional brand/rating filters, the cited answer, expandable source reviews, and one or two of the strongest EDA charts embedded so the app shows both layers.
 - Deploy to Streamlit Community Cloud, wire `GROQ_API_KEY` into Secrets, confirm the public URL works on a fresh browser.
-- Finish the README: problem framing, architecture diagram, run instructions, EDA highlights, evaluation summary, limitations, and the explicit tie to the P&G application.
+- Finish the README: problem framing, architecture diagram, run instructions, EDA highlights, evaluation summary, and limitations.
 - **Exit check:** live URL works, README complete, everything committed.
 
 ### If a day slips
@@ -254,7 +253,7 @@ Priority order to protect: **Evaluation (Phase 5) and honest limitations > deplo
 ## 9. Limitations to Document Honestly (a required deliverable)
 
 Write these into the README rather than hiding them:
-- The reviews are a public dataset, not P&G's internal data, and may be dated or incomplete per brand.
+- The reviews are a public dataset, not a company's internal data, and may be dated or incomplete per brand.
 - Retrieval can miss relevant reviews or surface loosely related ones; report the measured hit rate rather than claiming it "works."
 - The model can still drift from the source despite grounding; report where it did in evaluation.
 - Sentiment via VADER is a lexicon heuristic, not a trained classifier; it is directionally useful, not authoritative.
@@ -268,7 +267,7 @@ This section is a feature. It demonstrates the same evaluation honesty you alrea
 ## 10. README Outline (build during Phase 6)
 
 1. One-line description and the live demo link.
-2. Why this project (the P&G framing, in two or three sentences).
+2. Why this project (the problem framing, in two or three sentences).
 3. Architecture diagram (data -> clean -> EDA / index -> retrieve -> generate -> app).
 4. What is in it: the EDA layer and the RAG layer, one paragraph each.
 5. Key EDA insights (three or four bullets with a chart or two).
@@ -287,13 +286,12 @@ This section is a feature. It demonstrates the same evaluation honesty you alrea
 - [ ] `gold_questions.json` + scored `results.md` committed.
 - [ ] Streamlit app live with a working public URL.
 - [ ] Limitations documented.
-- [ ] A short paragraph drafted that maps this project to the P&G JD language, ready to paste into the application.
 
 ---
 
 ## 12. Stretch Goals (only after Definition of Done, or as a follow-up build)
 
-- **Agentic layer:** let the system decide when to filter by brand vs rating, or run a compare-brands tool, as multi-step tool use. This directly matches the JD's "AI agents" wording and is the natural next project if RAG lands early.
+- **Agentic layer:** let the system decide when to filter by brand vs rating, or run a compare-brands tool, as multi-step tool use. This is the natural next project if RAG lands early.
 - **Lightweight topic modeling** on complaint themes for richer EDA.
 - **A small automated faithfulness check** using a second LLM call as a grader.
 

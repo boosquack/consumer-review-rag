@@ -1,12 +1,23 @@
 # consumer-review-rag
 
-Exploratory analysis and a cited question-answering app over public Amazon reviews of three P&G haircare brands (Head & Shoulders, Pantene, and Herbal Essences), drawn from the Amazon Reviews 2023 dataset (Hou et al. 2024, arXiv:2403.03952).
+Exploratory analysis and a cited question-answering app over public Amazon reviews of three haircare brands (Head & Shoulders, Pantene, and Herbal Essences), drawn from the Amazon Reviews 2023 dataset (Hou et al. 2024, arXiv:2403.03952).
 
 **Live demo:** https://consumer-review-rag.streamlit.app/ (first load after a sleep rebuilds the index and can take several minutes; see [How to run locally](#how-to-run-locally) to run it yourself).
 
 ## Why this project
 
-P&G brand teams need to know what shoppers praise and complain about, with answers they can check. This project builds two layers on one corpus of public Amazon reviews: an EDA layer that turns ratings, volume, sentiment, and recurring themes into analyst-ready insight per brand, and a retrieval-augmented generation (RAG) layer that answers natural-language questions using only the retrieved reviews. Every answer cites its sources by brand, rating, and snippet, and the system declines when the reviews do not cover the question.
+Consumer-goods brand teams need to know what shoppers praise and complain about, with answers they can check. This project builds two layers on one corpus of public Amazon reviews: an EDA layer that turns ratings, volume, sentiment, and recurring themes into analyst-ready insight per brand, and a retrieval-augmented generation (RAG) layer that answers natural-language questions using only the retrieved reviews. Every answer cites its sources by brand, rating, and snippet, and the system declines when the reviews do not cover the question.
+
+## My role
+
+<!-- DRAFT for the maintainer to edit: keep only decisions you actually made, in your own words, then delete this comment. -->
+
+An AI coding agent (Claude Code) wrote most of the code under my direction; the agent's configuration is in `.claude/` and `_bmad-output/`. What I decided:
+
+- **Brands and category.** Three haircare brands (Head & Shoulders, Pantene, Herbal Essences) in one category, so brand comparisons are like-for-like. Locked 2026-09-15 in `PLAN.md`, after checking that each brand had enough reviews.
+- **Complaints are filtered by star rating, not sentiment.** My EDA found that VADER scores 32.3% of 1★ reviews as positive, so the RAG app's low/high rating bands use stars.
+- **What to measure.** Retrieval hit@6 and precision@6, citation validity, uncited rate, refusal accuracy, false-refusal rate, and faithfulness, with faithfulness reported for answered questions only because a refusal passes automatically.
+- **Publish the failures.** The evaluation write-up and Limitations section report the misses, over-generalizations, and label noise rather than only the headline numbers.
 
 ## Architecture
 
@@ -62,7 +73,7 @@ The faithfulness grades are the implementing agent's judgement, not an independe
 
 ## Limitations
 
-- The reviews are a public Amazon dataset (2005–2023), not P&G internal data, and coverage is uneven by brand and year — see [Key EDA insights](#key-eda-insights).
+- The reviews are a public Amazon dataset (2005–2023), not internal company data, and coverage is uneven by brand and year — see [Key EDA insights](#key-eda-insights).
 - Retrieval can miss relevant reviews or surface loosely related ones; the measured hit@6 is 0.86 and precision@6 is 0.70, not 1.00.
 - The model can drift from the sources despite grounding: 4 of 13 answered gold questions failed faithfulness grading (over-generalizing a filtered sample, misreading a source, or turning a small split into a frequency claim). See `eval/results.md`.
 - VADER is a lexicon heuristic, not a trained classifier: it only matches the star rating on 80.9% of non-3★ reviews, so it is directionally useful for brand-level comparison, not for finding individual complaints.
@@ -108,7 +119,3 @@ Run the tests with `uv run python -m unittest -v`; run the scored evaluation wit
 | App | Streamlit, deployed on Streamlit Community Cloud |
 | Config | `python-dotenv`; `src/config.py` is the single source for model names, paths, and constants |
 | Runtime | Python 3.11 |
-
-## Application paragraph
-
-This project pairs a Data Analyst deliverable with an AI Engineering one on a single corpus: an EDA notebook that turns raw P&G haircare reviews into measured, brand-level business insight (rating trends, sentiment, recurring complaint themes), and a retrieval-augmented generation system — the kind of AI-powered digital business solution P&G's AI Engineering Intern role calls for — that answers natural-language questions from real consumer feedback with a citation for every claim and a stated refusal when the evidence isn't there. Both layers are evaluated, not just built: `eval/results.md` reports measured retrieval and faithfulness numbers, including where the system falls short, in the same spirit of evidence-based rigor P&G Consumer & Market Knowledge work demands.

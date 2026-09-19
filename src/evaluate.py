@@ -433,6 +433,15 @@ def load_grades(path: Path, run_at: str) -> dict[str, Any] | None:
     return data.get("grades") or None
 
 
+def compare_grades(agent: dict[str, Any], human: dict[str, Any]) -> list[dict[str, Any]]:
+    """Return the ids both graders graded where their pass/fail differs."""
+    return [
+        {"id": qid, "agent": bool(agent[qid]["pass"]), "human": bool(human[qid]["pass"])}
+        for qid in human
+        if qid in agent and bool(agent[qid]["pass"]) != bool(human[qid]["pass"])
+    ]
+
+
 # --- CLI ---------------------------------------------------------------------------------
 
 
@@ -484,6 +493,18 @@ def _rescore(gold: dict[str, Any]) -> int:
     print(format_table(saved["questions"], saved.get("pattern_counts", {})))
     print()
     print(format_summary(summarize(saved["questions"], grades)))
+    human = load_grades(config.EVAL_FAITHFULNESS_HUMAN_JSON, saved["run_at"])
+    if human:
+        human_summary = summarize(saved["questions"], human)
+        print()
+        print(f"faithfulness (human-graded): {_fmt_rate(human_summary['faithfulness'])}")
+        print(f"faithfulness, answered only (human-graded): {_fmt_rate(human_summary['faithfulness_answered'])}")
+        if human_summary["ungraded"]:
+            print(f"ungraded by human: {', '.join(human_summary['ungraded'])}")
+        diffs = compare_grades(grades or {}, human)
+        print(f"agent/human disagreements: {len(diffs)}")
+        for diff in diffs:
+            print(f"  {diff['id']}: agent={'pass' if diff['agent'] else 'fail'}, human={'pass' if diff['human'] else 'fail'}")
     return 0
 
 
