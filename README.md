@@ -2,7 +2,7 @@
 
 Exploratory analysis and a cited question-answering app over public Amazon reviews of three P&G haircare brands (Head & Shoulders, Pantene, and Herbal Essences), drawn from the Amazon Reviews 2023 dataset (Hou et al. 2024, arXiv:2403.03952).
 
-**Live demo:** not yet deployed — see [How to run locally](#how-to-run-locally) in the meantime.
+**Live demo:** https://consumer-review-rag.streamlit.app/ (first load after a sleep rebuilds the index and can take several minutes; see [How to run locally](#how-to-run-locally) to run it yourself).
 
 ## Why this project
 

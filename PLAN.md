@@ -34,7 +34,7 @@ The project is "done" when all of the following are true:
 - [ ] An EDA notebook runs top to bottom with no errors and produces at least the visualizations listed in Section 7, Phase 2, each with a one to two sentence written insight.
 - [ ] A RAG pipeline answers natural-language questions over the reviews and returns citations (brand, rating, and a source snippet) for every answer.
 - [ ] A hand-built evaluation set of 15 to 20 questions exists, with retrieval and faithfulness scored and the results written up honestly.
-- [ ] A Streamlit app is deployed live on Streamlit Community Cloud with a working public URL.
+- [x] A Streamlit app is deployed live on Streamlit Community Cloud with a working public URL (https://consumer-review-rag.streamlit.app/).
 - [ ] A README ties the whole thing to the P&G application, with an architecture diagram and clear run instructions.
 - [ ] A LIMITATIONS section names where retrieval fails, where the model hallucinates, and what the system cannot answer.
 
